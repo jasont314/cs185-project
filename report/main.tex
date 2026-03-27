@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+
+% ---------- geometry ----------
+\usepackage[margin=1in]{geometry}
+
+% ---------- math ----------
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+% ---------- figures / tables ----------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+
+% ---------- algorithms ----------
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+% ---------- typography ----------
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ---------- references ----------
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+% ---------- misc ----------
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% ---------- custom commands ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\clip}{\mathrm{clip}}
+\DeclareMathOperator{\softmax}{softmax}
+\newcommand{\todo}[1]{{\color{red}\textbf{[TODO: #1]}}}
+
+% ==========================================================================
+\title{Holistic vs.\ Per-Step PPO for Stochastic Flow Policies\\in Continuous Control}
+\author{
+  Jason Trinh \\
+  University of California, Berkeley \\
+  \texttt{jason.trinh@berkeley.edu}
+}
+\date{Spring 2026 --- CS 185 Final Project}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Generative flow policies parameterize actions as the output of a multi-step
+stochastic process, where noise is iteratively refined into an action through a
+learned velocity field.  Proximal Policy Optimization (PPO) typically treats this
+chain as a black box, computing a single importance-sampling ratio from the
+holistic action density.  We ask whether PPO can instead operate \emph{per step}
+of the generative chain, and whether non-uniform credit assignment across steps
+improves learning.  We formalize per-step PPO for stochastic flow policies,
+propose uniform, learned-global, and state-dependent weighting schemes, and
+compare all variants on continuous-control benchmarks (HalfCheetah-v5,
+Hopper-v5).  Our experiments show \todo{one-sentence summary of main result}.
+\end{abstract}
+
+% ---------- sections ----------
+\input{sections/intro}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/results}
+\input{sections/conclusion}
+
+% ---------- references ----------
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,97 @@
+\section{Experimental Setup}
+\label{sec:experiments}
+
+% ------------------------------------------------------------------
+\subsection{Environments}
+\label{sec:experiments:envs}
+
+We evaluate on two continuous-control locomotion tasks from the Gymnasium
+MuJoCo suite~\citep{towers2024gymnasium}:
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{HalfCheetah-v5} ($d_s{=}17$, $d_a{=}6$): a planar running
+        task with dense velocity reward.
+  \item \textbf{Hopper-v5} ($d_s{=}11$, $d_a{=}3$): a single-legged hopping
+        task requiring balance; episodes terminate on falls.
+\end{itemize}
+\todo{Optionally add Ant-v5 or AntMaze results.}
+
+% ------------------------------------------------------------------
+\subsection{Methods Compared}
+\label{sec:experiments:methods}
+
+We compare the following PPO variants, all using the same stochastic flow
+policy architecture:
+\begin{enumerate}[nosep,leftmargin=*]
+  \item \textbf{Holistic PPO} (\Cref{sec:method:holistic}): standard PPO with
+        a single ratio computed from the full chain log-probability.
+  \item \textbf{Per-Step Uniform}: per-step PPO with uniform weights
+        $w_k = 1/K$.
+  \item \textbf{Per-Step Learned Global}: per-step PPO with learned global
+        logits $\boldsymbol{\alpha}$.
+  \item \textbf{Per-Step State-Dependent}: per-step PPO with the
+        state-dependent weighting network $h_\phi$.
+\end{enumerate}
+
+% ------------------------------------------------------------------
+\subsection{Architecture and Hyperparameters}
+\label{sec:experiments:hyperparams}
+
+The velocity field $v_\theta$ is parameterized as a 3-layer MLP with hidden
+dimension~256 and SiLU activations.  The step index $k$ is embedded via a
+sinusoidal positional encoding and concatenated with the state and latent
+inputs.  The state-dependent weighting network $h_\phi$ is a 2-layer MLP with
+hidden dimension~64.
+
+Key hyperparameters are listed in \Cref{tab:hyperparams}.
+
+\begin{table}[t]
+  \centering
+  \caption{Hyperparameters used across all experiments.}
+  \label{tab:hyperparams}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    \textbf{Hyperparameter} & \textbf{Value} \\
+    \midrule
+    Flow steps $K$                  & 4 (default) \\
+    Per-step noise $\sigma$         & 0.1 \\
+    PPO clip $\epsilon$             & 0.2 \\
+    GAE $\lambda$                   & 0.95 \\
+    Discount $\gamma$               & 0.99 \\
+    PPO epochs                      & 10 \\
+    Minibatch size                  & 64 \\
+    Rollout length                  & 2048 steps \\
+    Learning rate (policy)          & $3 \times 10^{-4}$ \\
+    Learning rate (value)           & $1 \times 10^{-3}$ \\
+    Learning rate (weights $\alpha/\phi$) & $1 \times 10^{-3}$ \\
+    Entropy coefficient             & 0.0 \\
+    Value loss coefficient          & 0.5 \\
+    Max gradient norm               & 0.5 \\
+    Total environment steps         & $1 \times 10^{6}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ------------------------------------------------------------------
+\subsection{Evaluation Protocol}
+\label{sec:experiments:eval}
+
+We train each method with 3 random seeds and evaluate every \todo{N} training
+steps by running 10 deterministic episodes (using the mean velocity field
+without per-step noise, i.e., $\sigma{=}0$ at evaluation time).  We report the
+mean and standard deviation of the episodic return across seeds.
+
+% ------------------------------------------------------------------
+\subsection{Ablations}
+\label{sec:experiments:ablations}
+
+We conduct the following ablation studies:
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Number of flow steps $K$}: we vary $K \in \{2, 4, 8\}$ to
+        assess how the gap between holistic and per-step PPO changes with chain
+        length.
+  \item \textbf{Weighting mode}: we compare uniform, learned-global, and
+        state-dependent weighting.
+  \item \textbf{Noise scale $\sigma$}: we vary
+        $\sigma \in \{0.01, 0.1, 0.5\}$ to test sensitivity to per-step
+        stochasticity.
+\end{itemize}

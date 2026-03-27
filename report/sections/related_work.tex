@@ -1,0 +1,60 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Proximal Policy Optimization.}
+PPO~\citep{schulman2017ppo} is the workhorse on-policy algorithm for deep RL,
+using clipped importance-sampling ratios to constrain policy updates.  Earlier
+trust-region methods include TRPO~\citep{schulman2015trpo}.  Our work retains
+the PPO framework but changes the granularity at which ratios and clipping are
+applied.
+
+\paragraph{Generative Models as Policies.}
+Diffusion models~\citep{ho2020ddpm,song2021scorebased} have been adopted as
+expressive policy classes.  \citet{chi2023diffusion} introduced Diffusion
+Policy for imitation learning in robotics.  \citet{black2024ddpo} proposed DDPO,
+which fine-tunes diffusion models with policy-gradient methods by treating each
+denoising step as an RL action.  Flow-matching
+policies~\citep{lipman2023flow,liu2023flow} replace the diffusion SDE with a
+simpler ODE-based transport, offering faster sampling and simpler training
+objectives.
+
+\paragraph{Stochastic Interpolants and Stochastic Flow Matching.}
+\citet{albergo2023stochastic} introduced stochastic interpolants, providing a
+unified framework that generalizes both diffusion and flow matching by
+interpolating between source and target distributions with optional stochasticity.
+\citet{albergo2023building} extended this to build normalizing flows with
+stochastic dynamics.  Our stochastic flow policy draws on this framework,
+retaining per-step stochasticity so that each conditional
+$p_\theta(\mathbf{z}_{k-1}\mid\mathbf{z}_k)$ has tractable Gaussian density.
+
+\paragraph{RL Fine-Tuning of Generative Policies.}
+Several works have applied RL to fine-tune generative policies.
+\citet{black2024ddpo} compute per-step importance weights within DDPO.
+\citet{fan2024dpok} use KL-regularized RL objectives for diffusion fine-tuning.
+\citet{clark2024directly} study direct reward fine-tuning of diffusion models.
+Most recently, DPPO~\citep{ren2025dppo} formulates diffusion policy optimization
+as a two-level MDP and applies PPO with per-step structure, while
+ReinFlow~\citep{hu2025reinflow} fine-tunes flow-matching policies with PPO using
+injected stochasticity.  Our work is complementary: rather than proposing a new
+algorithm, we conduct a controlled comparison of \emph{how} PPO credit and
+clipping should be distributed across internal steps, testing uniform, learned
+global, and state-dependent weighting schemes that these prior works do not
+systematically evaluate.
+
+\paragraph{Credit Assignment in RL.}
+Temporal credit assignment is a classical challenge in
+RL~\citep{sutton2018rl,minsky1961steps}.  Hindsight credit assignment
+methods~\citep{harutyunyan2019hindsight,hung2019optimizing} attempt to
+redistribute reward to relevant earlier decisions.  Our per-step weighting can
+be viewed as a form of \emph{intra-action} credit assignment: distributing the
+task-level advantage across the internal generative steps that produced the
+action.
+
+\paragraph{Positioning.}
+Our work bridges generative-model fine-tuning and PPO implementation design.
+DPPO~\citep{ren2025dppo} and ReinFlow~\citep{hu2025reinflow} demonstrate that
+per-step PPO is viable for generative policies, but neither systematically
+compares credit-assignment weighting schemes.  Our contribution is this
+controlled comparison: we hold the policy architecture and PPO framework fixed
+and vary only whether clipping and credit are applied holistically, per-step
+uniformly, or per-step with learned (global or state-dependent) weights.

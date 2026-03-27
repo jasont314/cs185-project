@@ -1,0 +1,9 @@
+torch>=2.0
+gymnasium[mujoco]>=0.29
+numpy>=1.24
+scipy
+pyyaml
+matplotlib
+seaborn
+tensorboard
+tqdm

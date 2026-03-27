@@ -1,0 +1,153 @@
+\section{Results}
+\label{sec:results}
+
+% ------------------------------------------------------------------
+\subsection{Main Comparison}
+\label{sec:results:main}
+
+\Cref{tab:main_results} presents the final evaluation returns for all methods.
+\todo{Fill in with actual numbers.}
+
+\begin{table}[t]
+  \centering
+  \caption{Mean evaluation return ($\pm$ std) over 3 seeds after $1\text{M}$
+           environment steps.  Best result per environment in \textbf{bold}.}
+  \label{tab:main_results}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Method} & \textbf{HalfCheetah-v5} & \textbf{Hopper-v5} \\
+    \midrule
+    Holistic PPO              & \todo{XXX $\pm$ YYY} & \todo{XXX $\pm$ YYY} \\
+    Per-Step Uniform          & \todo{XXX $\pm$ YYY} & \todo{XXX $\pm$ YYY} \\
+    Per-Step Learned Global   & \todo{XXX $\pm$ YYY} & \todo{XXX $\pm$ YYY} \\
+    Per-Step State-Dependent  & \todo{XXX $\pm$ YYY} & \todo{XXX $\pm$ YYY} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\todo{Discuss which methods outperform the baseline and by how much.  Note any
+environment-specific differences.}
+
+% ------------------------------------------------------------------
+\subsection{Training Curves}
+\label{sec:results:curves}
+
+\Cref{fig:training_curves} shows the evaluation return over the course of
+training.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/halfcheetah_training_curves.pdf}
+    \caption{HalfCheetah-v5}
+    \label{fig:curve_halfcheetah}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/hopper_training_curves.pdf}
+    \caption{Hopper-v5}
+    \label{fig:curve_hopper}
+  \end{subfigure}
+  \caption{Evaluation return vs.\ environment steps for all methods.  Solid
+           lines show the mean over 3 seeds; shaded regions show $\pm 1$ std.}
+  \label{fig:training_curves}
+\end{figure}
+
+\todo{Describe learning speed differences.  Does per-step PPO learn faster or
+more stably?}
+
+% ------------------------------------------------------------------
+\subsection{Weight Profile Analysis}
+\label{sec:results:weights}
+
+For the learned-global weighting scheme, \Cref{fig:weight_profile} visualizes
+the learned weight distribution $w_k$ across the $K$ flow steps after
+training.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/weight_profile.pdf}
+  \caption{Learned global weights $w_k$ (softmax of $\boldsymbol{\alpha}$)
+           across flow steps for HalfCheetah-v5.  \todo{Describe pattern.}}
+  \label{fig:weight_profile}
+\end{figure}
+
+\todo{Discuss which steps receive the most credit.  Do early steps (close to
+the final action) or late steps (close to noise) get higher weight?  Is the
+pattern consistent across environments?}
+
+% ------------------------------------------------------------------
+\subsection{Per-Step Clip Fraction Analysis}
+\label{sec:results:clipfrac}
+
+\Cref{fig:clip_fractions} compares the per-step clip fractions (fraction of
+samples where $r_{t,k}$ is clipped) between holistic and per-step PPO.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/clip_fractions.pdf}
+  \caption{Per-step clip fractions during training.  \todo{Describe the
+           difference between holistic and per-step clipping.}}
+  \label{fig:clip_fractions}
+\end{figure}
+
+\todo{Discuss whether per-step clipping leads to more uniform and moderate clip
+fractions compared to holistic clipping.}
+
+% ------------------------------------------------------------------
+\subsection{Ablation: Number of Flow Steps $K$}
+\label{sec:results:ablation_K}
+
+\Cref{tab:ablation_K} shows results as we vary the number of flow steps.
+
+\begin{table}[t]
+  \centering
+  \caption{Evaluation return on HalfCheetah-v5 for different $K$.}
+  \label{tab:ablation_K}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    \textbf{Method} & $K{=}2$ & $K{=}4$ & $K{=}8$ \\
+    \midrule
+    Holistic PPO              & \todo{---} & \todo{---} & \todo{---} \\
+    Per-Step Uniform          & \todo{---} & \todo{---} & \todo{---} \\
+    Per-Step Learned Global   & \todo{---} & \todo{---} & \todo{---} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\todo{Discuss how the gap between holistic and per-step changes with $K$.
+Hypothesis: per-step PPO should benefit more for larger $K$, where the holistic
+ratio becomes more extreme.}
+
+% ------------------------------------------------------------------
+\subsection{Ablation: Noise Scale $\sigma$}
+\label{sec:results:ablation_sigma}
+
+\begin{table}[t]
+  \centering
+  \caption{Evaluation return on HalfCheetah-v5 for different noise scales
+           $\sigma$, using per-step uniform PPO with $K{=}4$.}
+  \label{tab:ablation_sigma}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    \textbf{Method} & $\sigma{=}0.01$ & $\sigma{=}0.1$ & $\sigma{=}0.5$ \\
+    \midrule
+    Holistic PPO     & \todo{---} & \todo{---} & \todo{---} \\
+    Per-Step Uniform & \todo{---} & \todo{---} & \todo{---} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\todo{Discuss sensitivity to $\sigma$.  Smaller $\sigma$ concentrates density
+and may produce sharper ratios; larger $\sigma$ makes per-step densities
+broader.}
+
+% ------------------------------------------------------------------
+\subsection{Discussion}
+\label{sec:results:discussion}
+
+\todo{Synthesize findings.  When does per-step PPO help most?  Is
+state-dependent weighting worth the additional complexity?  What are failure
+modes?}

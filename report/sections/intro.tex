@@ -1,0 +1,50 @@
+\section{Introduction}
+\label{sec:intro}
+
+Generative models have emerged as a powerful policy class for continuous
+control.  Diffusion policies~\citep{chi2023diffusion} and flow-matching
+policies~\citep{lipman2023flow} parameterize the action distribution as the
+output of an iterative denoising or transport process, enabling expressive
+multimodal action distributions that outperform simple Gaussian policies on
+complex manipulation and locomotion tasks.
+
+When such generative policies are fine-tuned with on-policy reinforcement
+learning---specifically Proximal Policy Optimization
+(PPO)~\citep{schulman2017ppo}---the standard practice is to treat the entire
+generative chain as a \emph{black box}.  The holistic log-probability
+$\log p_\theta(\mathbf{a}\mid\mathbf{s})$ is obtained by summing per-step
+log-conditionals and a change-of-variable correction, and a single
+importance-sampling ratio $r_t = p_\theta(\mathbf{a}_t\mid\mathbf{s}_t) /
+p_{\theta_{\text{old}}}(\mathbf{a}_t\mid\mathbf{s}_t)$ drives the PPO
+surrogate loss.
+
+However, a stochastic flow policy with $K$ internal steps exposes $K$
+\emph{tractable} conditional densities
+$p_\theta(\mathbf{z}_{k-1}\mid\mathbf{z}_k,\mathbf{s},k)$, each a simple
+Gaussian.  This raises a natural design question:
+
+\begin{quote}
+\emph{Should PPO operate holistically on the final action, or per-step on each
+internal transition?  And if per-step, should every step receive equal credit
+for the task reward, or should credit be weighted?}
+\end{quote}
+
+Per-step optimization is appealing because it decomposes a single, potentially
+high-variance ratio into $K$ smaller, better-behaved ratios, each of which can
+be individually clipped.  Weighted credit assignment further allows the
+algorithm to focus gradient signal on the steps that matter most for downstream
+performance.
+
+\paragraph{Contributions.}
+We make the following contributions:
+\begin{enumerate}[leftmargin=*,nosep]
+  \item We \textbf{formalize per-step PPO} for stochastic flow policies,
+        deriving per-step importance-sampling ratios and clipped surrogate
+        objectives (\Cref{sec:method}).
+  \item We \textbf{propose weighted credit-assignment} schemes---uniform,
+        learned-global, and state-dependent---that modulate how the task
+        advantage is distributed across generative steps.
+  \item We provide an \textbf{empirical comparison} on continuous-control
+        benchmarks (HalfCheetah-v5, Hopper-v5), analyzing learning speed,
+        final performance, clip fractions, and learned weight profiles.
+\end{enumerate}

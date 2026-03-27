@@ -1,0 +1,238 @@
+\section{Method}
+\label{sec:method}
+
+We consider on-policy reinforcement learning with a stochastic flow policy
+$\pi_\theta$.  At each environment step, the agent observes state
+$\mathbf{s}\in\R^{d_s}$ and produces action
+$\mathbf{a}\in[-1,1]^{d_a}$ by running a $K$-step stochastic generative
+chain.
+
+% ------------------------------------------------------------------
+\subsection{Stochastic Flow Policy}
+\label{sec:method:flow}
+
+The generative chain proceeds from pure noise to an action as follows.
+Let $\Delta t = 1/K$ and let $\sigma > 0$ be the per-step noise scale.
+
+\begin{enumerate}[leftmargin=*,nosep]
+  \item Sample initial noise: $\mathbf{z}_K \sim \mathcal{N}(\mathbf{0},\mathbf{I})$.
+  \item For $k = K, K{-}1, \ldots, 1$, compute the next latent:
+\end{enumerate}
+\begin{align}
+  \mathbf{z}_{k-1}
+    &= \mathbf{z}_k
+       + \Delta t \cdot v_\theta(\mathbf{s}, \mathbf{z}_k, k)
+       + \sigma\,\boldsymbol{\epsilon}_k,
+  \qquad \boldsymbol{\epsilon}_k \sim \mathcal{N}(\mathbf{0},\mathbf{I}).
+  \label{eq:flow_step}
+\end{align}
+\begin{enumerate}[leftmargin=*,nosep,resume]
+  \item Apply a squashing function to obtain the action:
+        $\mathbf{a} = \tanh(\mathbf{z}_0)$.
+\end{enumerate}
+
+Each transition has a tractable Gaussian conditional:
+\begin{align}
+  p_\theta(\mathbf{z}_{k-1} \mid \mathbf{z}_k, \mathbf{s}, k)
+    &= \mathcal{N}\!\bigl(
+         \mathbf{z}_{k-1};\;
+         \mathbf{z}_k + \Delta t\, v_\theta(\mathbf{s}, \mathbf{z}_k, k),\;
+         \sigma^2 \mathbf{I}
+       \bigr).
+  \label{eq:per_step_density}
+\end{align}
+
+The holistic log-density of the final action is:
+\begin{align}
+  \log p_\theta(\mathbf{a}\mid\mathbf{s})
+    &= \sum_{k=1}^{K}
+       \log p_\theta(\mathbf{z}_{k-1}\mid\mathbf{z}_k,\mathbf{s},k)
+       + \log\!\left|\det\frac{\partial\,\tanh(\mathbf{z}_0)}
+                               {\partial\,\mathbf{z}_0}\right|.
+  \label{eq:holistic_logprob}
+\end{align}
+
+% ------------------------------------------------------------------
+\subsection{Holistic PPO (Baseline)}
+\label{sec:method:holistic}
+
+Standard PPO computes a single importance-sampling ratio per environment
+transition $(s_t, a_t)$:
+\begin{align}
+  r_t
+    &= \frac{p_\theta(\mathbf{a}_t\mid\mathbf{s}_t)}
+            {p_{\theta_{\text{old}}}(\mathbf{a}_t\mid\mathbf{s}_t)},
+  \label{eq:holistic_ratio}
+\end{align}
+and optimizes the clipped surrogate:
+\begin{align}
+  L^{\text{CLIP}}(\theta)
+    &= \E_t\Bigl[
+         \min\!\bigl(
+           r_t\, \hat{A}_t,\;
+           \clip(r_t, 1{-}\epsilon, 1{+}\epsilon)\,\hat{A}_t
+         \bigr)
+       \Bigr],
+  \label{eq:ppo_clip}
+\end{align}
+where $\hat{A}_t$ is the GAE advantage estimate and $\epsilon$ is the clip
+parameter (typically $0.2$).
+
+Because $r_t$ is the product of $K$ per-step ratios (plus a correction),
+it can be very large or very small, making clipping less effective for
+large $K$.
+
+% ------------------------------------------------------------------
+\subsection{Per-Step PPO}
+\label{sec:method:perstep}
+
+We propose to apply PPO's clipped surrogate \emph{independently at each
+generative step}.  Define the per-step ratio:
+\begin{align}
+  r_{t,k}
+    &= \frac{p_\theta(\mathbf{z}_{t,k-1}\mid\mathbf{z}_{t,k},\mathbf{s}_t,k)}
+            {p_{\theta_{\text{old}}}(\mathbf{z}_{t,k-1}\mid\mathbf{z}_{t,k},\mathbf{s}_t,k)}.
+  \label{eq:perstep_ratio}
+\end{align}
+
+Each step $k$ is assigned an advantage $A_{t,k} = w_k \cdot \hat{A}_t$, where
+$w_k$ is a credit-assignment weight satisfying $\sum_k w_k = 1$.  The per-step
+clipped surrogate is:
+\begin{align}
+  L^{\text{PS-CLIP}}(\theta)
+    &= \E_t\!\left[
+         \sum_{k=1}^{K}
+         \min\!\bigl(
+           r_{t,k}\, A_{t,k},\;
+           \clip(r_{t,k}, 1{-}\epsilon, 1{+}\epsilon)\, A_{t,k}
+         \bigr)
+       \right].
+  \label{eq:perstep_clip}
+\end{align}
+
+By clipping each $r_{t,k}$ individually, we prevent any single step from
+producing an excessively large update, even when the holistic ratio $r_t$
+would be far from~$1$.
+
+% ------------------------------------------------------------------
+\subsection{Weighted Credit Assignment}
+\label{sec:method:weights}
+
+We study three weighting schemes for the per-step advantages
+$A_{t,k} = w_k \cdot \hat{A}_t$:
+
+\paragraph{Uniform.}
+All steps receive equal credit:
+\begin{align}
+  w_k &= \frac{1}{K}, \qquad \forall\, k.
+  \label{eq:uniform}
+\end{align}
+
+\paragraph{Learned Global.}
+A single set of learnable logits $\boldsymbol{\alpha}\in\R^K$ produces
+step-dependent but state-independent weights:
+\begin{align}
+  w_k &= \softmax(\boldsymbol{\alpha})_k.
+  \label{eq:learned_global}
+\end{align}
+The logits $\boldsymbol{\alpha}$ are trained end-to-end alongside $\theta$.
+
+\paragraph{State-Dependent.}
+A small network $h_\phi$ takes the current state and latent as input and
+produces per-step weights that depend on the rollout:
+\begin{align}
+  w_{t,k} &= \softmax\!\bigl(
+                h_\phi(\mathbf{s}_t, \mathbf{z}_{t,k}, k)
+              \bigr)_k.
+  \label{eq:state_dep}
+\end{align}
+Here $\phi$ denotes the parameters of the weighting network, which are
+jointly optimized with $\theta$.
+
+% ------------------------------------------------------------------
+\subsection{Intra-Chain Temporal Credit Assignment}
+\label{sec:method:intra}
+
+The weighting schemes above split the environment advantage $\hat{A}_t$
+into per-step shares using fixed or learned proportions, but these shares
+are heuristic---they do not reflect which steps \emph{actually improved}
+the latent toward a good action.
+
+We propose \textbf{intra-chain temporal credit assignment}: we learn a
+value function $V_\psi(\mathbf{s}, \mathbf{z}_k, k)$ that estimates the
+expected action quality at each internal step, and compute genuine
+per-step advantages via temporal differencing within the chain:
+\begin{align}
+  A_{t,k}^{\text{intra}}
+    &= V_\psi(\mathbf{s}_t, \mathbf{z}_{t,k-1}, k{-}1)
+     - V_\psi(\mathbf{s}_t, \mathbf{z}_{t,k}, k).
+  \label{eq:intra_adv}
+\end{align}
+Intuitively, $A_{t,k}^{\text{intra}}$ measures how much step $k$
+improved the latent---a step that moves the latent toward a
+high-value region of the chain receives positive credit, while a step
+that degrades quality receives negative credit.
+
+To ground these intra-chain advantages in the actual reward signal, we
+normalize them to sum to the environment advantage:
+\begin{align}
+  \tilde{A}_{t,k}
+    &= A_{t,k}^{\text{intra}} \cdot
+       \frac{\hat{A}_t}
+            {\sum_{j=1}^{K} A_{t,j}^{\text{intra}} + \delta},
+  \label{eq:intra_norm}
+\end{align}
+where $\delta$ is a small constant for numerical stability.
+
+The intra-chain value function is trained with the loss:
+\begin{align}
+  L^{\text{intra}}(\psi)
+    &= \E_t\!\left[\bigl(
+         V_\psi(\mathbf{s}_t, \mathbf{z}_{t,0}, 0)
+       - V_\psi(\mathbf{s}_t, \mathbf{z}_{t,K}, K)
+       - \hat{A}_t
+       \bigr)^2\right],
+  \label{eq:intra_loss}
+\end{align}
+which ensures the total value change across the chain predicts the
+environment advantage.  The per-step PPO loss (\Cref{eq:perstep_clip})
+then uses $\tilde{A}_{t,k}$ in place of $w_k \cdot \hat{A}_t$.
+
+This approach extends temporal credit assignment \emph{inside} the
+generative chain, analogous to how GAE assigns credit across
+environment timesteps.  Unlike the weight-splitting schemes
+(\Cref{sec:method:weights}), intra-chain credit is state- and
+latent-dependent, grounded in learned value estimates, and need not
+sum to a fixed proportion.
+
+% ------------------------------------------------------------------
+\subsection{Algorithm Summary}
+\label{sec:method:algorithm}
+
+\Cref{alg:perstep_ppo} summarizes the per-step PPO training loop.
+
+\begin{algorithm}[t]
+\caption{Per-Step PPO for Stochastic Flow Policies}
+\label{alg:perstep_ppo}
+\KwIn{Initial policy $\theta_0$, weight parameters (depending on scheme),
+      clip parameter $\epsilon$, number of flow steps $K$, noise scale $\sigma$}
+\For{iteration $= 1, 2, \ldots$}{
+  Collect rollout batch using $\pi_{\theta_{\text{old}}}$\;
+  \For{each transition $(\mathbf{s}_t, \mathbf{a}_t, \hat{A}_t)$}{
+    Store intermediate latents $\{\mathbf{z}_{t,k}\}_{k=0}^{K}$\;
+  }
+  Compute GAE advantages $\{\hat{A}_t\}$\;
+  \For{PPO epoch $= 1, \ldots, N_{\text{epochs}}$}{
+    \For{minibatch of transitions}{
+      \For{$k = K, \ldots, 1$}{
+        Compute $r_{t,k}$ via \Cref{eq:perstep_ratio}\;
+        Compute $w_k$ (or $w_{t,k}$) via chosen scheme\;
+        $A_{t,k} \leftarrow w_k \cdot \hat{A}_t$\;
+      }
+      $L \leftarrow L^{\text{PS-CLIP}}$ \hfill (\Cref{eq:perstep_clip})\;
+      Update $\theta$ (and $\phi$ or $\boldsymbol{\alpha}$ if applicable)
+        via gradient ascent on $L$\;
+    }
+  }
+}
+\end{algorithm}

@@ -1,0 +1,35 @@
+env_name: AntMaze_UMaze-v5
+seed: 42
+total_timesteps: 2000000
+
+policy:
+  hidden_dim: 256
+  latent_dim: null  # defaults to action_dim
+  K: 4
+  sigma_init: 1.0
+  learn_sigma: false
+  sigma_network: false
+
+ppo:
+  clip_eps: 0.2
+  gamma: 0.995
+  gae_lambda: 0.98
+  num_rollout_steps: 4096
+  num_epochs: 10
+  batch_size: 128
+  lr: 1.0e-4
+  vf_coef: 0.5
+  ent_coef: 0.02
+  max_grad_norm: 0.5
+
+method:
+  mode: holistic  # holistic, per_step_uniform, per_step_learned_global, per_step_state_dependent
+
+eval:
+  eval_freq: 20000
+  num_eval_episodes: 20
+
+logging:
+  log_dir: results/antmaze
+  save_freq: 200000
+  use_tensorboard: true

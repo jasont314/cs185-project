@@ -1,0 +1,49 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+\paragraph{Summary.}
+We studied the question of how PPO should interact with the multi-step
+stochastic process inside a flow-based generative policy.  We formalized
+per-step PPO, which applies clipped importance-sampling ratios independently at
+each generative step, and introduced weighted credit-assignment schemes---uniform,
+learned-global, and state-dependent---to modulate gradient signal across steps.
+\todo{State the main empirical finding in 1--2 sentences.  E.g., ``Per-step PPO
+with learned global weights consistently outperformed holistic PPO on
+HalfCheetah-v5 and Hopper-v5, with the largest gains observed for $K{=}8$
+flow steps.''}
+
+\paragraph{Limitations.}
+Our study has several limitations:
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Computational overhead.}  Per-step PPO requires storing
+        intermediate latents $\{\mathbf{z}_{t,k}\}$ for every transition and
+        computing $K$ ratios per sample, increasing memory and compute relative
+        to holistic PPO.
+  \item \textbf{Limited environments.}  We evaluated on two MuJoCo locomotion
+        tasks.  Results may differ on higher-dimensional or sparse-reward tasks
+        such as AntMaze or dexterous manipulation.
+  \item \textbf{Fixed noise schedule.}  We used a constant $\sigma$ across all
+        steps; an adaptive or learned noise schedule could interact differently
+        with per-step clipping.
+  \item \textbf{No theoretical guarantees.}  We lack a formal analysis of when
+        per-step clipping provides better trust-region properties than holistic
+        clipping.
+\end{itemize}
+
+\paragraph{Future Work.}
+Several directions are promising:
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Learned noise schedule.}  Jointly learning $\sigma_k$ per step
+        could improve both policy expressiveness and the quality of per-step
+        ratios.
+  \item \textbf{Scaling to larger $K$.}  With many flow steps ($K \geq 16$),
+        the advantage of per-step clipping should grow; evaluating this regime
+        is important.
+  \item \textbf{Broader benchmarks.}  Testing on image-based manipulation,
+        multi-task settings, and sparse-reward environments would strengthen
+        generality claims.
+  \item \textbf{Theoretical analysis.}  Characterizing the bias-variance
+        trade-off of per-step vs.\ holistic clipping, and conditions under
+        which weighted credit assignment provably improves convergence, would
+        complement our empirical results.
+\end{itemize}
