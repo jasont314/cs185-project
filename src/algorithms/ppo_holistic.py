@@ -87,7 +87,8 @@ class PPOHolistic:
         ).to(self.device)
 
         # torch.compile for faster forward/backward (PyTorch 2.0+)
-        if self.cfg.get("compile", True):
+        # Disabled by default — enable with --compile true on supported systems
+        if self.cfg.get("compile", False):
             try:
                 self.policy = torch.compile(self.policy, mode="reduce-overhead")
                 self.value_fn = torch.compile(self.value_fn, mode="reduce-overhead")
