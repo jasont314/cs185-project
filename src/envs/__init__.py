@@ -38,7 +38,12 @@ def make_vec_env(env_name: str, num_envs: int, seed: int = 0) -> gym.vector.Vect
 
     if num_envs == 1:
         return gym.vector.SyncVectorEnv([make_single(0)])
-    return gym.vector.SyncVectorEnv([make_single(i) for i in range(num_envs)])
+    # AsyncVectorEnv runs each env in a separate process,
+    # utilizing multiple CPU cores. Falls back to Sync if it fails.
+    try:
+        return gym.vector.AsyncVectorEnv([make_single(i) for i in range(num_envs)])
+    except Exception:
+        return gym.vector.SyncVectorEnv([make_single(i) for i in range(num_envs)])
 
 
 def get_env_info(env_name: str) -> dict:
