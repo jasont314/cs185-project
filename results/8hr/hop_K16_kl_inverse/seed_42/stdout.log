@@ -1,0 +1,588 @@
+[Iter 1/488] steps=2048 reward=12.21 pi_loss=-0.0357 vf_loss=11.5085 entropy=371.7726 kl=5.9871
+[Iter 2/488] steps=4096 reward=77.62 pi_loss=-0.0017 vf_loss=66.9983 entropy=68.2591 kl=0.0128
+[Iter 3/488] steps=6144 reward=79.62 pi_loss=-0.0003 vf_loss=112.7915 entropy=71.5045 kl=0.1382
+[Iter 4/488] steps=8192 reward=73.24 pi_loss=-0.0021 vf_loss=127.4633 entropy=69.1534 kl=0.0601
+[Iter 5/488] steps=10240 reward=46.74 pi_loss=-0.0029 vf_loss=134.5060 entropy=68.1887 kl=0.0129
+  [Eval] mean_return=37.91 std_return=5.98
+[Iter 6/488] steps=12288 reward=96.42 pi_loss=-0.0022 vf_loss=93.1954 entropy=68.6489 kl=0.0425
+[Iter 7/488] steps=14336 reward=114.57 pi_loss=-0.0027 vf_loss=103.7004 entropy=68.1686 kl=0.0064
+[Iter 8/488] steps=16384 reward=121.94 pi_loss=-0.0020 vf_loss=103.3441 entropy=68.5215 kl=0.0237
+[Iter 9/488] steps=18432 reward=106.24 pi_loss=0.0096 vf_loss=102.8822 entropy=308.3633 kl=2.5937
+[Iter 10/488] steps=20480 reward=54.60 pi_loss=-0.0326 vf_loss=41.7681 entropy=242.6162 kl=4.4108
+  [Eval] mean_return=37.80 std_return=2.82
+[Iter 11/488] steps=22528 reward=42.54 pi_loss=-0.0017 vf_loss=14.9661 entropy=805.5487 kl=8.0120
+[Iter 12/488] steps=24576 reward=37.77 pi_loss=-0.1327 vf_loss=2.0780 entropy=765.7294 kl=6.4052
+[Iter 13/488] steps=26624 reward=37.78 pi_loss=-0.0115 vf_loss=0.1940 entropy=94.2620 kl=1.1946
+[Iter 14/488] steps=28672 reward=37.84 pi_loss=0.0063 vf_loss=0.1423 entropy=190.4303 kl=3.7754
+[Iter 15/488] steps=30720 reward=37.88 pi_loss=0.0043 vf_loss=0.1409 entropy=69.0541 kl=0.0595
+  [Eval] mean_return=38.37 std_return=0.84
+[Iter 16/488] steps=32768 reward=37.69 pi_loss=0.0100 vf_loss=0.1325 entropy=263.4781 kl=6.7466
+[Iter 17/488] steps=34816 reward=38.54 pi_loss=-0.0147 vf_loss=0.3069 entropy=225.6736 kl=7.4760
+[Iter 18/488] steps=36864 reward=44.35 pi_loss=-0.0288 vf_loss=1.0871 entropy=151.8126 kl=3.8520
+[Iter 19/488] steps=38912 reward=56.73 pi_loss=-0.0745 vf_loss=1.0690 entropy=220.2230 kl=6.8940
+[Iter 20/488] steps=40960 reward=79.00 pi_loss=-0.0030 vf_loss=6.8165 entropy=68.3892 kl=0.0163
+  [Eval] mean_return=987.30 std_return=2.83
+[Iter 21/488] steps=43008 reward=202.36 pi_loss=-0.0029 vf_loss=14.2225 entropy=68.2805 kl=0.0147
+[Iter 22/488] steps=45056 reward=41.13 pi_loss=-0.0014 vf_loss=45.1016 entropy=162.0612 kl=4.2009
+[Iter 23/488] steps=47104 reward=15.68 pi_loss=-0.0044 vf_loss=33.0943 entropy=68.5083 kl=0.0321
+[Iter 24/488] steps=49152 reward=96.53 pi_loss=-0.0461 vf_loss=19.4614 entropy=160.0557 kl=3.6126
+[Iter 25/488] steps=51200 reward=65.02 pi_loss=-0.0121 vf_loss=9.2977 entropy=230.3552 kl=3.3802
+  [Eval] mean_return=46.48 std_return=1.89
+[Iter 26/488] steps=53248 reward=49.71 pi_loss=-0.0703 vf_loss=5.5799 entropy=418.1440 kl=8.8830
+[Iter 27/488] steps=55296 reward=5.36 pi_loss=-0.1410 vf_loss=10.8928 entropy=286.7369 kl=5.6141
+[Iter 28/488] steps=57344 reward=24.34 pi_loss=-0.0034 vf_loss=23.9323 entropy=959.2939 kl=9.1601
+[Iter 29/488] steps=59392 reward=46.26 pi_loss=-0.1229 vf_loss=1.1626 entropy=5629.7692 kl=10.7054
+[Iter 30/488] steps=61440 reward=44.47 pi_loss=0.0085 vf_loss=0.5598 entropy=3228.0911 kl=12.0951
+  [Eval] mean_return=47.91 std_return=1.14
+[Iter 31/488] steps=63488 reward=49.78 pi_loss=-0.0368 vf_loss=0.9173 entropy=1076.2492 kl=10.0892
+[Iter 32/488] steps=65536 reward=59.86 pi_loss=-0.0545 vf_loss=1.8057 entropy=283.9015 kl=6.2699
+[Iter 33/488] steps=67584 reward=76.20 pi_loss=-0.0300 vf_loss=1.6188 entropy=373.2688 kl=7.7525
+[Iter 34/488] steps=69632 reward=45.52 pi_loss=-0.0776 vf_loss=22.1069 entropy=329.1416 kl=5.6429
+[Iter 35/488] steps=71680 reward=34.05 pi_loss=-0.0017 vf_loss=32.6523 entropy=68.2520 kl=0.0154
+  [Eval] mean_return=63.70 std_return=6.34
+[Iter 36/488] steps=73728 reward=45.91 pi_loss=-0.0033 vf_loss=31.3000 entropy=68.3284 kl=0.0206
+[Iter 37/488] steps=75776 reward=58.29 pi_loss=-0.0958 vf_loss=1.9520 entropy=3882.1618 kl=11.5297
+[Iter 38/488] steps=77824 reward=46.87 pi_loss=-0.0247 vf_loss=2.7515 entropy=510.5146 kl=10.9660
+[Iter 39/488] steps=79872 reward=6.94 pi_loss=-0.1221 vf_loss=10.8080 entropy=300.2049 kl=5.4827
+[Iter 40/488] steps=81920 reward=42.33 pi_loss=-0.1042 vf_loss=14.1300 entropy=643.6537 kl=7.6445
+  [Eval] mean_return=47.05 std_return=1.51
+[Iter 41/488] steps=83968 reward=43.97 pi_loss=-0.0707 vf_loss=11.8547 entropy=2926.4136 kl=9.5362
+[Iter 42/488] steps=86016 reward=44.04 pi_loss=-0.0054 vf_loss=6.9427 entropy=2460.9385 kl=10.5931
+[Iter 43/488] steps=88064 reward=44.02 pi_loss=-0.0137 vf_loss=7.5775 entropy=185.8577 kl=3.1917
+[Iter 44/488] steps=90112 reward=46.71 pi_loss=-0.0019 vf_loss=1.8918 entropy=1121.7960 kl=9.4878
+  [Eval] mean_return=46.60 std_return=0.94
+[Iter 45/488] steps=92160 reward=47.48 pi_loss=0.0322 vf_loss=0.4713 entropy=893.7081 kl=9.1378
+[Iter 46/488] steps=94208 reward=38.21 pi_loss=-0.0014 vf_loss=24.6017 entropy=68.5016 kl=0.0225
+[Iter 47/488] steps=96256 reward=45.04 pi_loss=-0.0062 vf_loss=9.2595 entropy=1066.6734 kl=8.1675
+[Iter 48/488] steps=98304 reward=49.64 pi_loss=-0.0276 vf_loss=10.8409 entropy=295.7452 kl=5.8544
+[Iter 49/488] steps=100352 reward=50.93 pi_loss=0.0079 vf_loss=9.7283 entropy=407.9698 kl=5.3874
+  [Eval] mean_return=51.48 std_return=0.65
+[Iter 50/488] steps=102400 reward=53.64 pi_loss=-0.0200 vf_loss=2.8044 entropy=1436.0384 kl=13.3294
+[Iter 51/488] steps=104448 reward=49.06 pi_loss=-0.0075 vf_loss=24.5550 entropy=540.1571 kl=5.5637
+[Iter 52/488] steps=106496 reward=65.75 pi_loss=-0.0650 vf_loss=3.4940 entropy=1564.4317 kl=10.6970
+[Iter 53/488] steps=108544 reward=44.40 pi_loss=-0.0208 vf_loss=1.8208 entropy=525.9207 kl=7.8220
+[Iter 54/488] steps=110592 reward=45.97 pi_loss=-0.0012 vf_loss=1.2114 entropy=1151.1595 kl=8.6533
+  [Eval] mean_return=37.63 std_return=1.18
+[Iter 55/488] steps=112640 reward=37.77 pi_loss=-0.1287 vf_loss=0.2929 entropy=275.5625 kl=5.0259
+[Iter 56/488] steps=114688 reward=46.17 pi_loss=-0.0736 vf_loss=1.9621 entropy=707.0972 kl=8.1656
+[Iter 57/488] steps=116736 reward=44.55 pi_loss=-0.0523 vf_loss=5.6447 entropy=530.8807 kl=2.9406
+[Iter 58/488] steps=118784 reward=51.05 pi_loss=-0.0584 vf_loss=0.9356 entropy=1967.0812 kl=10.2950
+[Iter 59/488] steps=120832 reward=68.04 pi_loss=-0.0146 vf_loss=4.4886 entropy=187.8713 kl=3.8028
+  [Eval] mean_return=68.29 std_return=1.29
+[Iter 60/488] steps=122880 reward=71.18 pi_loss=-0.0214 vf_loss=1.9292 entropy=347.3043 kl=6.4021
+[Iter 61/488] steps=124928 reward=67.68 pi_loss=-0.0553 vf_loss=2.2041 entropy=955.0110 kl=8.2734
+[Iter 62/488] steps=126976 reward=86.47 pi_loss=-0.0004 vf_loss=1.2491 entropy=413.9088 kl=5.6828
+[Iter 63/488] steps=129024 reward=262.25 pi_loss=-0.0017 vf_loss=13.2952 entropy=68.4428 kl=0.0179
+[Iter 64/488] steps=131072 reward=213.69 pi_loss=-0.0013 vf_loss=6.8820 entropy=68.1779 kl=0.0101
+  [Eval] mean_return=119.26 std_return=57.73
+[Iter 65/488] steps=133120 reward=267.44 pi_loss=-0.0022 vf_loss=7.7887 entropy=68.3166 kl=0.0128
+[Iter 66/488] steps=135168 reward=194.46 pi_loss=-0.0011 vf_loss=9.4636 entropy=68.2950 kl=0.0088
+[Iter 67/488] steps=137216 reward=252.55 pi_loss=-0.0029 vf_loss=6.3491 entropy=68.5077 kl=0.0168
+[Iter 68/488] steps=139264 reward=283.57 pi_loss=-0.0031 vf_loss=33.7676 entropy=68.1990 kl=0.0149
+[Iter 69/488] steps=141312 reward=221.20 pi_loss=-0.0025 vf_loss=11.4078 entropy=68.5230 kl=0.0288
+  [Eval] mean_return=98.77 std_return=65.16
+[Iter 70/488] steps=143360 reward=245.20 pi_loss=-0.0022 vf_loss=27.9170 entropy=68.3239 kl=0.0168
+[Iter 71/488] steps=145408 reward=190.20 pi_loss=-0.0050 vf_loss=9.7810 entropy=141.1333 kl=2.0014
+[Iter 72/488] steps=147456 reward=714.62 pi_loss=-0.0013 vf_loss=30.5579 entropy=68.6497 kl=0.0301
+[Iter 73/488] steps=149504 reward=986.37 pi_loss=-0.0011 vf_loss=29.4096 entropy=69.2388 kl=0.0627
+[Iter 74/488] steps=151552 reward=715.18 pi_loss=0.0023 vf_loss=29.3998 entropy=80.5431 kl=0.5708
+  [Eval] mean_return=369.84 std_return=327.76
+[Iter 75/488] steps=153600 reward=772.91 pi_loss=-0.0013 vf_loss=18.5642 entropy=69.0639 kl=0.0583
+[Iter 76/488] steps=155648 reward=998.35 pi_loss=-0.0016 vf_loss=31.2981 entropy=68.7641 kl=0.0337
+[Iter 77/488] steps=157696 reward=841.76 pi_loss=-0.0017 vf_loss=20.1569 entropy=68.6473 kl=0.0407
+[Iter 78/488] steps=159744 reward=757.83 pi_loss=-0.0017 vf_loss=38.2455 entropy=77.5728 kl=0.3127
+[Iter 79/488] steps=161792 reward=459.82 pi_loss=0.0056 vf_loss=40.6458 entropy=199.1103 kl=2.6358
+  [Eval] mean_return=972.53 std_return=1.90
+[Iter 80/488] steps=163840 reward=287.52 pi_loss=-0.0070 vf_loss=90.3587 entropy=235.8770 kl=2.3221
+[Iter 81/488] steps=165888 reward=978.60 pi_loss=-0.0007 vf_loss=34.2302 entropy=79.0569 kl=0.5862
+[Iter 82/488] steps=167936 reward=1001.37 pi_loss=-0.0093 vf_loss=32.1689 entropy=212.8230 kl=3.1284
+[Iter 83/488] steps=169984 reward=673.10 pi_loss=-0.0082 vf_loss=33.2794 entropy=383.3360 kl=4.7477
+[Iter 84/488] steps=172032 reward=417.19 pi_loss=-0.0238 vf_loss=48.4020 entropy=127.4142 kl=1.8226
+  [Eval] mean_return=986.52 std_return=5.18
+[Iter 85/488] steps=174080 reward=253.02 pi_loss=0.0014 vf_loss=88.9609 entropy=133.3057 kl=1.6036
+[Iter 86/488] steps=176128 reward=393.44 pi_loss=-0.0065 vf_loss=57.9168 entropy=182.0471 kl=3.8178
+[Iter 87/488] steps=178176 reward=241.87 pi_loss=0.0156 vf_loss=59.0321 entropy=276.8596 kl=3.7644
+[Iter 88/488] steps=180224 reward=215.55 pi_loss=0.0033 vf_loss=67.2335 entropy=86.4481 kl=0.6731
+  [Eval] mean_return=256.98 std_return=60.71
+[Iter 89/488] steps=182272 reward=280.07 pi_loss=-0.0017 vf_loss=42.2509 entropy=68.3173 kl=0.0087
+[Iter 90/488] steps=184320 reward=246.83 pi_loss=-0.0030 vf_loss=54.2101 entropy=68.3981 kl=0.0155
+[Iter 91/488] steps=186368 reward=380.97 pi_loss=-0.0009 vf_loss=43.2257 entropy=68.5413 kl=0.0216
+[Iter 92/488] steps=188416 reward=1021.40 pi_loss=-0.0011 vf_loss=27.1742 entropy=68.9296 kl=0.0368
+[Iter 93/488] steps=190464 reward=909.80 pi_loss=-0.0022 vf_loss=18.8124 entropy=68.6229 kl=0.0291
+  [Eval] mean_return=1018.29 std_return=1.62
+[Iter 94/488] steps=192512 reward=1016.90 pi_loss=-0.0043 vf_loss=32.4298 entropy=83.8607 kl=0.6219
+[Iter 95/488] steps=194560 reward=1014.07 pi_loss=-0.0017 vf_loss=35.4010 entropy=70.9811 kl=0.1751
+[Iter 96/488] steps=196608 reward=1014.31 pi_loss=-0.0002 vf_loss=34.4267 entropy=84.3413 kl=0.8642
+[Iter 97/488] steps=198656 reward=1015.25 pi_loss=0.0041 vf_loss=32.5422 entropy=155.7669 kl=1.7791
+[Iter 98/488] steps=200704 reward=1010.35 pi_loss=-0.0002 vf_loss=37.1085 entropy=76.1979 kl=0.4165
+  [Eval] mean_return=1011.38 std_return=1.03
+[Iter 99/488] steps=202752 reward=1009.46 pi_loss=-0.0024 vf_loss=34.6330 entropy=69.2406 kl=0.0671
+[Iter 100/488] steps=204800 reward=1006.80 pi_loss=-0.0006 vf_loss=36.2233 entropy=72.0515 kl=0.2249
+[Iter 101/488] steps=206848 reward=1000.85 pi_loss=-0.0028 vf_loss=39.5548 entropy=72.8328 kl=0.2694
+[Iter 102/488] steps=208896 reward=998.73 pi_loss=-0.0015 vf_loss=40.3592 entropy=74.3563 kl=0.3516
+[Iter 103/488] steps=210944 reward=1005.94 pi_loss=0.0076 vf_loss=36.9241 entropy=173.1689 kl=1.6810
+  [Eval] mean_return=1004.84 std_return=1.18
+[Iter 104/488] steps=212992 reward=1001.92 pi_loss=0.0006 vf_loss=35.4409 entropy=79.3980 kl=0.5274
+[Iter 105/488] steps=215040 reward=1003.72 pi_loss=-0.0012 vf_loss=33.1676 entropy=85.8045 kl=0.6378
+[Iter 106/488] steps=217088 reward=1005.07 pi_loss=-0.0007 vf_loss=43.2937 entropy=73.2957 kl=0.2644
+[Iter 107/488] steps=219136 reward=1009.28 pi_loss=0.0062 vf_loss=30.8482 entropy=353.7115 kl=3.9128
+[Iter 108/488] steps=221184 reward=1006.82 pi_loss=0.0253 vf_loss=32.0272 entropy=552.4853 kl=4.9440
+  [Eval] mean_return=988.71 std_return=5.51
+[Iter 109/488] steps=223232 reward=991.69 pi_loss=0.0030 vf_loss=38.0074 entropy=201.3694 kl=3.1772
+[Iter 110/488] steps=225280 reward=979.98 pi_loss=0.0013 vf_loss=39.0280 entropy=85.2949 kl=0.7162
+[Iter 111/488] steps=227328 reward=527.30 pi_loss=-0.0267 vf_loss=47.5778 entropy=115.5813 kl=1.6931
+[Iter 112/488] steps=229376 reward=985.56 pi_loss=0.0008 vf_loss=32.0605 entropy=381.8440 kl=5.1373
+[Iter 113/488] steps=231424 reward=972.29 pi_loss=0.0011 vf_loss=38.7398 entropy=72.8562 kl=0.2794
+  [Eval] mean_return=976.20 std_return=1.94
+[Iter 114/488] steps=233472 reward=976.63 pi_loss=-0.0009 vf_loss=37.3946 entropy=80.0976 kl=0.6915
+[Iter 115/488] steps=235520 reward=975.12 pi_loss=-0.0022 vf_loss=35.9228 entropy=77.1184 kl=0.4445
+[Iter 116/488] steps=237568 reward=979.27 pi_loss=-0.0030 vf_loss=34.3671 entropy=116.4837 kl=1.2494
+[Iter 117/488] steps=239616 reward=980.24 pi_loss=-0.0023 vf_loss=34.8228 entropy=68.5859 kl=0.0308
+[Iter 118/488] steps=241664 reward=981.29 pi_loss=-0.0018 vf_loss=36.6179 entropy=69.0752 kl=0.0608
+  [Eval] mean_return=981.06 std_return=1.25
+[Iter 119/488] steps=243712 reward=950.27 pi_loss=-0.0016 vf_loss=34.3771 entropy=159.7732 kl=1.0507
+[Iter 120/488] steps=245760 reward=639.54 pi_loss=-0.0119 vf_loss=39.5792 entropy=165.1159 kl=2.1715
+[Iter 121/488] steps=247808 reward=982.46 pi_loss=0.0022 vf_loss=34.7944 entropy=83.6106 kl=0.7969
+[Iter 122/488] steps=249856 reward=987.20 pi_loss=-0.0020 vf_loss=33.2037 entropy=79.6362 kl=0.6250
+[Iter 123/488] steps=251904 reward=985.07 pi_loss=-0.0007 vf_loss=31.5671 entropy=69.0414 kl=0.0590
+  [Eval] mean_return=983.47 std_return=1.84
+[Iter 124/488] steps=253952 reward=987.49 pi_loss=0.0001 vf_loss=29.6884 entropy=146.2549 kl=2.0550
+[Iter 125/488] steps=256000 reward=993.91 pi_loss=0.0041 vf_loss=20.6402 entropy=292.4267 kl=2.8363
+[Iter 126/488] steps=258048 reward=987.89 pi_loss=0.0032 vf_loss=30.9388 entropy=114.0556 kl=1.8739
+[Iter 127/488] steps=260096 reward=984.01 pi_loss=0.0042 vf_loss=34.8099 entropy=145.0675 kl=1.7137
+  [Eval] mean_return=991.85 std_return=1.26
+[Iter 128/488] steps=262144 reward=992.16 pi_loss=0.0001 vf_loss=31.7568 entropy=75.5103 kl=0.4177
+[Iter 129/488] steps=264192 reward=995.50 pi_loss=0.0009 vf_loss=32.0994 entropy=106.2825 kl=1.4626
+[Iter 130/488] steps=266240 reward=993.99 pi_loss=-0.0009 vf_loss=31.1531 entropy=70.7358 kl=0.1570
+[Iter 131/488] steps=268288 reward=992.79 pi_loss=0.0005 vf_loss=32.8719 entropy=73.5719 kl=0.3229
+[Iter 132/488] steps=270336 reward=902.70 pi_loss=-0.0158 vf_loss=37.2727 entropy=129.3600 kl=1.4690
+  [Eval] mean_return=992.23 std_return=2.47
+[Iter 133/488] steps=272384 reward=999.90 pi_loss=-0.0008 vf_loss=29.5906 entropy=180.2590 kl=2.0767
+[Iter 134/488] steps=274432 reward=992.67 pi_loss=-0.0004 vf_loss=34.4651 entropy=70.1046 kl=0.1122
+[Iter 135/488] steps=276480 reward=995.58 pi_loss=0.0052 vf_loss=33.7005 entropy=280.1231 kl=2.3789
+[Iter 136/488] steps=278528 reward=998.95 pi_loss=0.0050 vf_loss=32.4930 entropy=303.3738 kl=2.1849
+[Iter 137/488] steps=280576 reward=1010.82 pi_loss=0.0033 vf_loss=29.3581 entropy=179.8961 kl=1.4288
+  [Eval] mean_return=1003.15 std_return=2.38
+[Iter 138/488] steps=282624 reward=1008.12 pi_loss=0.0014 vf_loss=29.4054 entropy=104.5798 kl=0.7633
+[Iter 139/488] steps=284672 reward=1011.60 pi_loss=0.0052 vf_loss=29.8029 entropy=255.2743 kl=1.6183
+[Iter 140/488] steps=286720 reward=1010.77 pi_loss=-0.0021 vf_loss=29.3709 entropy=79.8053 kl=0.3788
+[Iter 141/488] steps=288768 reward=1003.63 pi_loss=-0.0005 vf_loss=36.0751 entropy=75.2757 kl=0.2391
+[Iter 142/488] steps=290816 reward=1005.58 pi_loss=-0.0025 vf_loss=30.1103 entropy=96.8326 kl=0.8253
+  [Eval] mean_return=984.70 std_return=0.94
+[Iter 143/488] steps=292864 reward=1000.45 pi_loss=-0.0069 vf_loss=24.5875 entropy=109.4190 kl=1.0047
+[Iter 144/488] steps=294912 reward=987.54 pi_loss=0.0002 vf_loss=39.4689 entropy=71.6797 kl=0.1497
+[Iter 145/488] steps=296960 reward=987.47 pi_loss=0.0000 vf_loss=38.7761 entropy=69.4684 kl=0.0755
+[Iter 146/488] steps=299008 reward=995.07 pi_loss=0.0032 vf_loss=29.6011 entropy=99.0319 kl=0.5056
+[Iter 147/488] steps=301056 reward=995.09 pi_loss=0.0004 vf_loss=34.2806 entropy=79.7056 kl=0.4942
+  [Eval] mean_return=985.78 std_return=1.17
+[Iter 148/488] steps=303104 reward=997.78 pi_loss=-0.0008 vf_loss=32.1082 entropy=73.9157 kl=0.2230
+[Iter 149/488] steps=305152 reward=986.80 pi_loss=-0.0026 vf_loss=36.6197 entropy=73.0166 kl=0.2368
+[Iter 150/488] steps=307200 reward=609.93 pi_loss=-0.0140 vf_loss=25.4021 entropy=236.3308 kl=2.1250
+[Iter 151/488] steps=309248 reward=439.05 pi_loss=0.0014 vf_loss=15.5373 entropy=457.4846 kl=2.9642
+[Iter 152/488] steps=311296 reward=981.22 pi_loss=-0.0013 vf_loss=35.9690 entropy=70.5817 kl=0.1348
+  [Eval] mean_return=972.67 std_return=1.39
+[Iter 153/488] steps=313344 reward=985.24 pi_loss=-0.0013 vf_loss=37.0844 entropy=70.8551 kl=0.1456
+[Iter 154/488] steps=315392 reward=995.82 pi_loss=-0.0076 vf_loss=23.0743 entropy=89.3740 kl=0.8493
+[Iter 155/488] steps=317440 reward=744.10 pi_loss=0.0119 vf_loss=44.3564 entropy=182.2832 kl=2.3880
+[Iter 156/488] steps=319488 reward=228.18 pi_loss=-0.0401 vf_loss=26.1106 entropy=728.7454 kl=8.6876
+[Iter 157/488] steps=321536 reward=154.66 pi_loss=-0.0034 vf_loss=36.4212 entropy=1830.2375 kl=4.6420
+  [Eval] mean_return=183.19 std_return=73.45
+[Iter 158/488] steps=323584 reward=137.19 pi_loss=0.0034 vf_loss=27.7291 entropy=778.4909 kl=5.1867
+[Iter 159/488] steps=325632 reward=183.32 pi_loss=0.0337 vf_loss=23.6020 entropy=253.8776 kl=2.2865
+[Iter 160/488] steps=327680 reward=274.60 pi_loss=-0.0554 vf_loss=14.5145 entropy=928.8857 kl=7.3228
+[Iter 161/488] steps=329728 reward=159.76 pi_loss=0.0043 vf_loss=53.0837 entropy=104.1146 kl=1.1944
+[Iter 162/488] steps=331776 reward=158.94 pi_loss=0.0194 vf_loss=75.8162 entropy=685.7252 kl=6.2533
+  [Eval] mean_return=141.83 std_return=64.64
+[Iter 163/488] steps=333824 reward=113.77 pi_loss=0.0540 vf_loss=58.7321 entropy=1255.9951 kl=6.1264
+[Iter 164/488] steps=335872 reward=184.05 pi_loss=-0.0275 vf_loss=58.4179 entropy=264.9547 kl=3.7101
+[Iter 165/488] steps=337920 reward=152.50 pi_loss=-0.0042 vf_loss=63.6403 entropy=786.6991 kl=4.1446
+[Iter 166/488] steps=339968 reward=68.33 pi_loss=-0.0040 vf_loss=134.7620 entropy=2640.1147 kl=5.9612
+[Iter 167/488] steps=342016 reward=49.04 pi_loss=0.0166 vf_loss=95.9939 entropy=1268.6663 kl=5.5778
+  [Eval] mean_return=29.07 std_return=2.50
+[Iter 168/488] steps=344064 reward=29.80 pi_loss=-0.0516 vf_loss=30.1225 entropy=6028.6933 kl=10.9959
+[Iter 169/488] steps=346112 reward=43.47 pi_loss=-0.0090 vf_loss=25.8812 entropy=468.2005 kl=5.8918
+[Iter 170/488] steps=348160 reward=5.44 pi_loss=-0.0831 vf_loss=11.1565 entropy=406.3318 kl=7.6232
+[Iter 171/488] steps=350208 reward=3.01 pi_loss=-0.0300 vf_loss=1.5153 entropy=251.3276 kl=6.6941
+  [Eval] mean_return=2.02 std_return=0.21
+[Iter 172/488] steps=352256 reward=2.20 pi_loss=-0.0735 vf_loss=0.1780 entropy=280.8885 kl=9.7080
+[Iter 173/488] steps=354304 reward=1.99 pi_loss=-0.1065 vf_loss=0.0591 entropy=442.7946 kl=5.9997
+[Iter 174/488] steps=356352 reward=2.55 pi_loss=0.0614 vf_loss=0.1324 entropy=798.0007 kl=9.8790
+[Iter 175/488] steps=358400 reward=19.59 pi_loss=-0.0809 vf_loss=15.6130 entropy=1448.0664 kl=7.3423
+[Iter 176/488] steps=360448 reward=22.64 pi_loss=-0.0613 vf_loss=12.2245 entropy=1455.1501 kl=10.6382
+  [Eval] mean_return=27.02 std_return=8.03
+[Iter 177/488] steps=362496 reward=24.23 pi_loss=-0.0403 vf_loss=6.3297 entropy=3223.3642 kl=10.1173
+[Iter 178/488] steps=364544 reward=31.78 pi_loss=-0.0288 vf_loss=2.2579 entropy=2534.3238 kl=10.6978
+[Iter 179/488] steps=366592 reward=31.77 pi_loss=0.0219 vf_loss=6.0686 entropy=1293.9779 kl=7.4790
+[Iter 180/488] steps=368640 reward=34.74 pi_loss=0.0244 vf_loss=7.7610 entropy=445.1185 kl=6.1834
+[Iter 181/488] steps=370688 reward=37.90 pi_loss=0.0590 vf_loss=5.8900 entropy=1213.4524 kl=9.7832
+  [Eval] mean_return=38.85 std_return=15.18
+[Iter 182/488] steps=372736 reward=33.23 pi_loss=0.0389 vf_loss=7.6332 entropy=951.4348 kl=7.8252
+[Iter 183/488] steps=374784 reward=32.02 pi_loss=0.0401 vf_loss=8.9108 entropy=554.9097 kl=5.1102
+[Iter 184/488] steps=376832 reward=37.16 pi_loss=0.0724 vf_loss=8.3499 entropy=1458.6841 kl=8.2695
+[Iter 185/488] steps=378880 reward=38.68 pi_loss=0.0558 vf_loss=5.9007 entropy=385.6122 kl=8.6106
+[Iter 186/488] steps=380928 reward=33.36 pi_loss=0.0236 vf_loss=5.2023 entropy=359.3156 kl=7.9391
+  [Eval] mean_return=32.40 std_return=5.11
+[Iter 187/488] steps=382976 reward=31.91 pi_loss=-0.0017 vf_loss=4.3571 entropy=1273.1903 kl=9.6320
+[Iter 188/488] steps=385024 reward=29.50 pi_loss=0.0253 vf_loss=4.3540 entropy=1530.6321 kl=9.5111
+[Iter 189/488] steps=387072 reward=31.67 pi_loss=0.0225 vf_loss=3.4247 entropy=1444.3388 kl=9.2935
+[Iter 190/488] steps=389120 reward=36.52 pi_loss=0.0075 vf_loss=1.1644 entropy=4367.6494 kl=10.1490
+[Iter 191/488] steps=391168 reward=37.62 pi_loss=0.0068 vf_loss=1.4231 entropy=3818.4440 kl=9.2646
+  [Eval] mean_return=37.87 std_return=3.94
+[Iter 192/488] steps=393216 reward=45.61 pi_loss=-0.0318 vf_loss=4.7518 entropy=529.8020 kl=7.1715
+[Iter 193/488] steps=395264 reward=48.71 pi_loss=0.0395 vf_loss=7.4215 entropy=550.7900 kl=6.9343
+[Iter 194/488] steps=397312 reward=55.23 pi_loss=0.0155 vf_loss=8.1796 entropy=1590.6601 kl=6.4966
+[Iter 195/488] steps=399360 reward=50.16 pi_loss=0.0020 vf_loss=6.1655 entropy=633.8204 kl=7.1122
+[Iter 196/488] steps=401408 reward=59.97 pi_loss=0.0301 vf_loss=5.9811 entropy=744.5942 kl=12.6481
+  [Eval] mean_return=50.15 std_return=11.02
+[Iter 197/488] steps=403456 reward=53.19 pi_loss=0.0217 vf_loss=5.9228 entropy=410.9796 kl=5.3963
+[Iter 198/488] steps=405504 reward=40.25 pi_loss=0.0066 vf_loss=11.5940 entropy=170.7960 kl=3.4794
+[Iter 199/488] steps=407552 reward=32.87 pi_loss=0.0380 vf_loss=9.1967 entropy=913.3435 kl=8.5378
+[Iter 200/488] steps=409600 reward=40.30 pi_loss=-0.0093 vf_loss=12.8071 entropy=381.8017 kl=6.8654
+[Iter 201/488] steps=411648 reward=34.48 pi_loss=0.0719 vf_loss=15.5666 entropy=1102.2351 kl=9.1694
+  [Eval] mean_return=38.64 std_return=14.80
+[Iter 202/488] steps=413696 reward=34.91 pi_loss=0.0571 vf_loss=12.3340 entropy=1190.0654 kl=12.0712
+[Iter 203/488] steps=415744 reward=26.30 pi_loss=-0.0061 vf_loss=9.0108 entropy=679.8493 kl=8.2134
+[Iter 204/488] steps=417792 reward=27.64 pi_loss=0.0057 vf_loss=16.6825 entropy=1100.2167 kl=8.4135
+[Iter 205/488] steps=419840 reward=11.79 pi_loss=-0.0440 vf_loss=20.4974 entropy=1129.3582 kl=6.1912
+[Iter 206/488] steps=421888 reward=39.52 pi_loss=-0.0459 vf_loss=6.0042 entropy=1275.1797 kl=13.8472
+  [Eval] mean_return=48.36 std_return=8.59
+[Iter 207/488] steps=423936 reward=48.49 pi_loss=0.0084 vf_loss=3.6797 entropy=658.7376 kl=9.0322
+[Iter 208/488] steps=425984 reward=41.51 pi_loss=0.0561 vf_loss=7.1245 entropy=700.6575 kl=6.4696
+[Iter 209/488] steps=428032 reward=46.52 pi_loss=0.0215 vf_loss=6.5336 entropy=2335.2954 kl=11.2770
+[Iter 210/488] steps=430080 reward=27.52 pi_loss=0.0115 vf_loss=20.9738 entropy=644.5826 kl=7.2337
+  [Eval] mean_return=16.14 std_return=13.38
+[Iter 211/488] steps=432128 reward=13.34 pi_loss=-0.0008 vf_loss=22.3973 entropy=433.9673 kl=6.9073
+[Iter 212/488] steps=434176 reward=9.75 pi_loss=0.0356 vf_loss=26.8291 entropy=1329.4807 kl=6.0880
+[Iter 213/488] steps=436224 reward=13.75 pi_loss=0.0083 vf_loss=28.9591 entropy=749.8951 kl=9.4878
+[Iter 214/488] steps=438272 reward=29.82 pi_loss=0.0205 vf_loss=22.0989 entropy=514.5815 kl=9.7346
+[Iter 215/488] steps=440320 reward=42.68 pi_loss=-0.0511 vf_loss=15.0000 entropy=733.3601 kl=10.3715
+  [Eval] mean_return=50.34 std_return=4.69
+[Iter 216/488] steps=442368 reward=40.75 pi_loss=0.0408 vf_loss=16.2826 entropy=1045.3204 kl=6.5614
+[Iter 217/488] steps=444416 reward=30.20 pi_loss=0.0008 vf_loss=13.0336 entropy=3494.2860 kl=6.6403
+[Iter 218/488] steps=446464 reward=35.83 pi_loss=-0.0020 vf_loss=9.7933 entropy=2314.9032 kl=9.0478
+[Iter 219/488] steps=448512 reward=33.09 pi_loss=0.0265 vf_loss=11.0062 entropy=1629.6056 kl=7.9865
+[Iter 220/488] steps=450560 reward=30.47 pi_loss=0.0058 vf_loss=15.8894 entropy=725.7674 kl=8.9943
+  [Eval] mean_return=54.41 std_return=4.18
+[Iter 221/488] steps=452608 reward=49.17 pi_loss=-0.0929 vf_loss=1.8841 entropy=1253.3043 kl=12.3744
+[Iter 222/488] steps=454656 reward=40.63 pi_loss=-0.0253 vf_loss=3.7729 entropy=769.2464 kl=8.5918
+[Iter 223/488] steps=456704 reward=48.99 pi_loss=-0.0324 vf_loss=2.2124 entropy=510.8799 kl=8.4913
+[Iter 224/488] steps=458752 reward=47.68 pi_loss=0.0187 vf_loss=0.8762 entropy=4094.8005 kl=10.9516
+[Iter 225/488] steps=460800 reward=34.83 pi_loss=-0.0264 vf_loss=12.1417 entropy=2932.4087 kl=8.5933
+  [Eval] mean_return=30.12 std_return=6.52
+[Iter 226/488] steps=462848 reward=27.83 pi_loss=0.0444 vf_loss=4.2150 entropy=12524.2100 kl=10.9224
+[Iter 227/488] steps=464896 reward=39.35 pi_loss=0.0541 vf_loss=10.8077 entropy=5306.8478 kl=11.1754
+[Iter 228/488] steps=466944 reward=45.82 pi_loss=0.0107 vf_loss=18.2324 entropy=2473.3509 kl=6.6035
+[Iter 229/488] steps=468992 reward=56.82 pi_loss=0.0217 vf_loss=19.6430 entropy=5543.8693 kl=9.1162
+[Iter 230/488] steps=471040 reward=62.67 pi_loss=-0.0712 vf_loss=12.5262 entropy=671.9954 kl=7.7140
+  [Eval] mean_return=62.39 std_return=12.86
+[Iter 231/488] steps=473088 reward=67.02 pi_loss=-0.0292 vf_loss=11.9118 entropy=1657.3459 kl=8.7094
+[Iter 232/488] steps=475136 reward=67.13 pi_loss=0.0450 vf_loss=25.0794 entropy=8410.2223 kl=8.5524
+[Iter 233/488] steps=477184 reward=110.17 pi_loss=-0.0684 vf_loss=14.9009 entropy=1998.3096 kl=8.9279
+[Iter 234/488] steps=479232 reward=121.13 pi_loss=0.0147 vf_loss=44.6013 entropy=8225.6095 kl=8.1452
+[Iter 235/488] steps=481280 reward=105.53 pi_loss=0.0089 vf_loss=60.8553 entropy=1480.8790 kl=5.9310
+  [Eval] mean_return=158.30 std_return=85.52
+[Iter 236/488] steps=483328 reward=128.61 pi_loss=0.0029 vf_loss=58.5423 entropy=1040.8304 kl=6.1892
+[Iter 237/488] steps=485376 reward=107.97 pi_loss=-0.0008 vf_loss=48.7811 entropy=574.2014 kl=5.4609
+[Iter 238/488] steps=487424 reward=88.01 pi_loss=0.0109 vf_loss=35.5091 entropy=1076.4662 kl=8.0477
+[Iter 239/488] steps=489472 reward=68.21 pi_loss=0.0177 vf_loss=50.4582 entropy=517.5089 kl=4.1140
+[Iter 240/488] steps=491520 reward=72.98 pi_loss=0.0270 vf_loss=31.7806 entropy=2802.0740 kl=10.7894
+  [Eval] mean_return=73.30 std_return=44.97
+[Iter 241/488] steps=493568 reward=75.27 pi_loss=0.0301 vf_loss=44.9703 entropy=2044.9170 kl=9.3365
+[Iter 242/488] steps=495616 reward=64.41 pi_loss=0.0484 vf_loss=35.3610 entropy=2490.0171 kl=9.1858
+[Iter 243/488] steps=497664 reward=74.15 pi_loss=0.0312 vf_loss=57.8916 entropy=14417.7872 kl=8.1166
+[Iter 244/488] steps=499712 reward=72.85 pi_loss=-0.0129 vf_loss=39.7942 entropy=695.8833 kl=6.3646
+[Iter 245/488] steps=501760 reward=87.60 pi_loss=0.0366 vf_loss=48.9746 entropy=2538.1515 kl=7.3818
+  [Eval] mean_return=91.00 std_return=75.57
+[Iter 246/488] steps=503808 reward=83.32 pi_loss=0.0523 vf_loss=36.6844 entropy=1514.5552 kl=8.7708
+[Iter 247/488] steps=505856 reward=118.47 pi_loss=0.0247 vf_loss=66.0244 entropy=2713.7927 kl=3.3611
+[Iter 248/488] steps=507904 reward=89.45 pi_loss=0.0504 vf_loss=64.2007 entropy=1126.5725 kl=6.2971
+[Iter 249/488] steps=509952 reward=52.21 pi_loss=0.0284 vf_loss=40.8770 entropy=842.1514 kl=7.5581
+[Iter 250/488] steps=512000 reward=54.85 pi_loss=0.0675 vf_loss=44.4272 entropy=2246.3229 kl=9.3911
+  [Eval] mean_return=36.37 std_return=28.11
+[Iter 251/488] steps=514048 reward=42.83 pi_loss=-0.0170 vf_loss=43.7394 entropy=1787.5621 kl=8.9883
+[Iter 252/488] steps=516096 reward=48.88 pi_loss=0.0292 vf_loss=27.6760 entropy=2470.3696 kl=9.1829
+[Iter 253/488] steps=518144 reward=48.70 pi_loss=-0.0270 vf_loss=4.9704 entropy=550.6594 kl=7.9454
+[Iter 254/488] steps=520192 reward=48.97 pi_loss=0.0157 vf_loss=5.2540 entropy=536.0320 kl=7.5675
+  [Eval] mean_return=54.63 std_return=6.74
+[Iter 255/488] steps=522240 reward=55.78 pi_loss=-0.0260 vf_loss=10.5285 entropy=714.6800 kl=11.0688
+[Iter 256/488] steps=524288 reward=45.55 pi_loss=0.0034 vf_loss=6.1552 entropy=437.8679 kl=7.4584
+[Iter 257/488] steps=526336 reward=49.58 pi_loss=0.0382 vf_loss=7.9525 entropy=1160.5496 kl=10.4848
+[Iter 258/488] steps=528384 reward=59.52 pi_loss=0.0347 vf_loss=8.2048 entropy=1568.9087 kl=11.7162
+[Iter 259/488] steps=530432 reward=71.45 pi_loss=-0.0022 vf_loss=17.5861 entropy=613.7562 kl=7.2224
+  [Eval] mean_return=76.46 std_return=63.50
+[Iter 260/488] steps=532480 reward=83.31 pi_loss=-0.0152 vf_loss=26.2698 entropy=880.5995 kl=10.4974
+[Iter 261/488] steps=534528 reward=155.57 pi_loss=0.0084 vf_loss=31.9240 entropy=703.9096 kl=7.8722
+[Iter 262/488] steps=536576 reward=96.04 pi_loss=0.0422 vf_loss=43.6191 entropy=1164.1020 kl=8.2162
+[Iter 263/488] steps=538624 reward=116.99 pi_loss=0.0237 vf_loss=44.6604 entropy=2560.6829 kl=6.6785
+[Iter 264/488] steps=540672 reward=93.81 pi_loss=0.0213 vf_loss=34.4012 entropy=1701.7108 kl=7.2309
+  [Eval] mean_return=112.41 std_return=60.00
+[Iter 265/488] steps=542720 reward=120.09 pi_loss=0.0357 vf_loss=47.5643 entropy=1630.9005 kl=7.7404
+[Iter 266/488] steps=544768 reward=48.20 pi_loss=-0.0786 vf_loss=6.6382 entropy=375.5828 kl=4.5851
+[Iter 267/488] steps=546816 reward=52.33 pi_loss=-0.0214 vf_loss=7.5408 entropy=771.2578 kl=10.5712
+[Iter 268/488] steps=548864 reward=62.94 pi_loss=0.0136 vf_loss=17.8634 entropy=526.0594 kl=10.5566
+[Iter 269/488] steps=550912 reward=56.83 pi_loss=-0.0375 vf_loss=5.2480 entropy=1109.9809 kl=10.9978
+  [Eval] mean_return=69.16 std_return=66.81
+[Iter 270/488] steps=552960 reward=74.32 pi_loss=-0.0052 vf_loss=21.7512 entropy=411.2391 kl=9.3047
+[Iter 271/488] steps=555008 reward=51.11 pi_loss=-0.0043 vf_loss=8.9944 entropy=352.7471 kl=8.4724
+[Iter 272/488] steps=557056 reward=82.01 pi_loss=0.0253 vf_loss=52.5716 entropy=522.4295 kl=7.5850
+[Iter 273/488] steps=559104 reward=65.42 pi_loss=0.0104 vf_loss=45.4580 entropy=182.0057 kl=3.8362
+[Iter 274/488] steps=561152 reward=62.00 pi_loss=0.0047 vf_loss=36.0525 entropy=230.9478 kl=3.2692
+  [Eval] mean_return=65.51 std_return=25.44
+[Iter 275/488] steps=563200 reward=73.73 pi_loss=0.0070 vf_loss=47.9332 entropy=160.9551 kl=2.5961
+[Iter 276/488] steps=565248 reward=64.59 pi_loss=0.1061 vf_loss=38.9309 entropy=2993.2753 kl=10.7943
+[Iter 277/488] steps=567296 reward=99.67 pi_loss=0.0266 vf_loss=69.4647 entropy=2083.5774 kl=8.7014
+[Iter 278/488] steps=569344 reward=74.19 pi_loss=-0.0419 vf_loss=61.8212 entropy=1613.0210 kl=7.0480
+[Iter 279/488] steps=571392 reward=85.57 pi_loss=0.0051 vf_loss=56.2444 entropy=1684.8162 kl=8.1518
+  [Eval] mean_return=57.11 std_return=37.36
+[Iter 280/488] steps=573440 reward=63.58 pi_loss=0.0257 vf_loss=26.4383 entropy=1646.5128 kl=8.9014
+[Iter 281/488] steps=575488 reward=63.54 pi_loss=0.0044 vf_loss=43.5361 entropy=1295.2254 kl=8.9412
+[Iter 282/488] steps=577536 reward=88.71 pi_loss=0.0141 vf_loss=57.2600 entropy=953.0796 kl=8.5672
+[Iter 283/488] steps=579584 reward=86.16 pi_loss=0.0197 vf_loss=61.2430 entropy=1009.2801 kl=5.6405
+[Iter 284/488] steps=581632 reward=156.77 pi_loss=0.0499 vf_loss=40.8210 entropy=5192.4722 kl=9.3877
+  [Eval] mean_return=91.86 std_return=67.42
+[Iter 285/488] steps=583680 reward=86.59 pi_loss=0.0244 vf_loss=65.7718 entropy=1119.8151 kl=5.4594
+[Iter 286/488] steps=585728 reward=94.10 pi_loss=0.0114 vf_loss=57.8427 entropy=547.2413 kl=2.6871
+[Iter 287/488] steps=587776 reward=86.54 pi_loss=0.0322 vf_loss=68.7533 entropy=430.4323 kl=6.7965
+[Iter 288/488] steps=589824 reward=115.32 pi_loss=0.0003 vf_loss=68.3218 entropy=2251.6166 kl=6.4348
+[Iter 289/488] steps=591872 reward=97.62 pi_loss=0.0360 vf_loss=53.8996 entropy=966.2900 kl=7.7310
+  [Eval] mean_return=143.81 std_return=77.82
+[Iter 290/488] steps=593920 reward=115.84 pi_loss=0.0302 vf_loss=68.9320 entropy=913.5936 kl=7.7287
+[Iter 291/488] steps=595968 reward=153.59 pi_loss=0.0003 vf_loss=95.8088 entropy=690.7384 kl=6.8962
+[Iter 292/488] steps=598016 reward=128.83 pi_loss=-0.0070 vf_loss=123.5087 entropy=1418.4120 kl=8.1713
+[Iter 293/488] steps=600064 reward=135.00 pi_loss=0.0065 vf_loss=85.4061 entropy=9211.1798 kl=7.9880
+  [Eval] mean_return=135.60 std_return=59.23
+[Iter 294/488] steps=602112 reward=141.94 pi_loss=0.0354 vf_loss=107.1126 entropy=16535.2873 kl=7.3633
+[Iter 295/488] steps=604160 reward=186.46 pi_loss=0.0082 vf_loss=56.5575 entropy=6063.3781 kl=11.1748
+[Iter 296/488] steps=606208 reward=110.51 pi_loss=-0.0195 vf_loss=96.8035 entropy=1477.5622 kl=4.5911
+[Iter 297/488] steps=608256 reward=137.77 pi_loss=0.0012 vf_loss=78.1740 entropy=455.6200 kl=7.6664
+[Iter 298/488] steps=610304 reward=134.52 pi_loss=-0.0269 vf_loss=48.8799 entropy=1109.5978 kl=9.2502
+  [Eval] mean_return=133.64 std_return=70.86
+[Iter 299/488] steps=612352 reward=143.52 pi_loss=0.0288 vf_loss=95.2468 entropy=6227.3840 kl=8.1581
+[Iter 300/488] steps=614400 reward=92.32 pi_loss=0.0078 vf_loss=104.4868 entropy=8373.4978 kl=9.3438
+[Iter 301/488] steps=616448 reward=141.00 pi_loss=0.0051 vf_loss=55.7243 entropy=2377.3371 kl=9.3466
+[Iter 302/488] steps=618496 reward=141.73 pi_loss=-0.0293 vf_loss=34.2828 entropy=1955.8654 kl=8.2938
+[Iter 303/488] steps=620544 reward=120.98 pi_loss=-0.0119 vf_loss=38.4758 entropy=1415.9441 kl=9.0372
+  [Eval] mean_return=147.06 std_return=32.08
+[Iter 304/488] steps=622592 reward=138.63 pi_loss=0.0404 vf_loss=26.7086 entropy=7228.6750 kl=8.2889
+[Iter 305/488] steps=624640 reward=105.73 pi_loss=0.0072 vf_loss=53.9519 entropy=1279.7396 kl=6.1081
+[Iter 306/488] steps=626688 reward=130.93 pi_loss=-0.0138 vf_loss=7.4898 entropy=1268.8430 kl=12.2465
+[Iter 307/488] steps=628736 reward=121.91 pi_loss=-0.0013 vf_loss=45.8265 entropy=766.2953 kl=5.1890
+[Iter 308/488] steps=630784 reward=139.94 pi_loss=0.0002 vf_loss=38.4509 entropy=4069.6316 kl=7.4588
+  [Eval] mean_return=130.99 std_return=30.31
+[Iter 309/488] steps=632832 reward=118.25 pi_loss=-0.0195 vf_loss=35.9891 entropy=3066.8923 kl=5.8543
+[Iter 310/488] steps=634880 reward=110.09 pi_loss=0.0036 vf_loss=61.2578 entropy=1701.3066 kl=5.0307
+[Iter 311/488] steps=636928 reward=118.39 pi_loss=0.0032 vf_loss=101.1212 entropy=836.7113 kl=7.1395
+[Iter 312/488] steps=638976 reward=128.52 pi_loss=-0.0183 vf_loss=44.3672 entropy=1825.6225 kl=7.9019
+[Iter 313/488] steps=641024 reward=118.89 pi_loss=0.0098 vf_loss=43.2757 entropy=3618.4739 kl=7.9237
+  [Eval] mean_return=117.76 std_return=48.87
+[Iter 314/488] steps=643072 reward=101.62 pi_loss=0.0189 vf_loss=62.8433 entropy=3381.7470 kl=5.8053
+[Iter 315/488] steps=645120 reward=113.07 pi_loss=0.0307 vf_loss=51.8379 entropy=2288.9040 kl=5.6001
+[Iter 316/488] steps=647168 reward=104.10 pi_loss=0.0477 vf_loss=61.5516 entropy=3155.0155 kl=6.8106
+[Iter 317/488] steps=649216 reward=120.05 pi_loss=0.0167 vf_loss=56.6954 entropy=2171.7971 kl=8.0694
+[Iter 318/488] steps=651264 reward=113.35 pi_loss=0.0433 vf_loss=61.0400 entropy=3374.8689 kl=8.6267
+  [Eval] mean_return=92.42 std_return=61.19
+[Iter 319/488] steps=653312 reward=92.52 pi_loss=0.0363 vf_loss=68.5602 entropy=4174.6937 kl=6.9979
+[Iter 320/488] steps=655360 reward=119.49 pi_loss=0.0182 vf_loss=63.7555 entropy=10574.3895 kl=8.6376
+[Iter 321/488] steps=657408 reward=139.33 pi_loss=0.0633 vf_loss=68.2556 entropy=8552.8419 kl=10.8363
+[Iter 322/488] steps=659456 reward=127.40 pi_loss=0.0277 vf_loss=70.3064 entropy=33409.7665 kl=9.7602
+[Iter 323/488] steps=661504 reward=146.31 pi_loss=-0.0082 vf_loss=31.9615 entropy=908.3333 kl=9.0558
+  [Eval] mean_return=157.19 std_return=40.20
+[Iter 324/488] steps=663552 reward=161.78 pi_loss=0.0194 vf_loss=10.9460 entropy=1102.2876 kl=10.3693
+[Iter 325/488] steps=665600 reward=159.05 pi_loss=0.0301 vf_loss=26.7135 entropy=623.7586 kl=7.3993
+[Iter 326/488] steps=667648 reward=141.78 pi_loss=0.0079 vf_loss=71.8938 entropy=390.0087 kl=4.4965
+[Iter 327/488] steps=669696 reward=149.15 pi_loss=0.0000 vf_loss=23.1043 entropy=2530.3019 kl=9.8377
+[Iter 328/488] steps=671744 reward=143.62 pi_loss=-0.0035 vf_loss=56.3908 entropy=1293.7112 kl=3.6248
+  [Eval] mean_return=142.69 std_return=40.14
+[Iter 329/488] steps=673792 reward=143.20 pi_loss=-0.0050 vf_loss=54.9083 entropy=1375.5071 kl=5.8520
+[Iter 330/488] steps=675840 reward=155.13 pi_loss=0.0404 vf_loss=54.5101 entropy=1089.4756 kl=8.9235
+[Iter 331/488] steps=677888 reward=138.24 pi_loss=0.0230 vf_loss=81.7057 entropy=4172.4271 kl=7.7593
+[Iter 332/488] steps=679936 reward=130.46 pi_loss=0.0061 vf_loss=85.4359 entropy=879.3621 kl=4.6501
+[Iter 333/488] steps=681984 reward=143.18 pi_loss=0.0100 vf_loss=72.2813 entropy=480.4836 kl=5.2446
+  [Eval] mean_return=182.36 std_return=51.03
+[Iter 334/488] steps=684032 reward=139.80 pi_loss=0.0135 vf_loss=90.9122 entropy=3137.3286 kl=6.9162
+[Iter 335/488] steps=686080 reward=138.10 pi_loss=0.0283 vf_loss=102.3677 entropy=5884.3576 kl=7.2000
+[Iter 336/488] steps=688128 reward=136.49 pi_loss=0.0296 vf_loss=119.4227 entropy=7219.0181 kl=7.1652
+[Iter 337/488] steps=690176 reward=157.72 pi_loss=0.0335 vf_loss=97.4914 entropy=3001.7800 kl=7.5838
+  [Eval] mean_return=159.43 std_return=75.09
+[Iter 338/488] steps=692224 reward=153.21 pi_loss=0.0214 vf_loss=75.8588 entropy=3935.5924 kl=7.9925
+[Iter 339/488] steps=694272 reward=191.00 pi_loss=0.0034 vf_loss=43.4624 entropy=4130.9187 kl=10.3948
+[Iter 340/488] steps=696320 reward=167.02 pi_loss=0.0287 vf_loss=75.2130 entropy=1421.7949 kl=7.3789
+[Iter 341/488] steps=698368 reward=143.26 pi_loss=0.0027 vf_loss=58.1525 entropy=4778.9722 kl=7.0887
+[Iter 342/488] steps=700416 reward=172.43 pi_loss=0.0189 vf_loss=51.4464 entropy=3164.0676 kl=7.8604
+  [Eval] mean_return=197.89 std_return=53.62
+[Iter 343/488] steps=702464 reward=193.30 pi_loss=0.0417 vf_loss=49.9592 entropy=1601.3444 kl=9.4575
+[Iter 344/488] steps=704512 reward=132.86 pi_loss=0.0698 vf_loss=98.0987 entropy=2264.7498 kl=10.0078
+[Iter 345/488] steps=706560 reward=181.10 pi_loss=0.0397 vf_loss=62.8330 entropy=2708.7029 kl=10.7375
+[Iter 346/488] steps=708608 reward=159.78 pi_loss=0.0330 vf_loss=84.1955 entropy=1336.4805 kl=7.2750
+[Iter 347/488] steps=710656 reward=150.67 pi_loss=0.0375 vf_loss=101.1741 entropy=2019.8746 kl=7.9914
+  [Eval] mean_return=223.29 std_return=76.17
+[Iter 348/488] steps=712704 reward=173.40 pi_loss=0.0438 vf_loss=67.3035 entropy=1218.2958 kl=9.6424
+[Iter 349/488] steps=714752 reward=198.48 pi_loss=0.0359 vf_loss=46.9034 entropy=2005.9418 kl=7.1861
+[Iter 350/488] steps=716800 reward=186.92 pi_loss=0.0342 vf_loss=66.8500 entropy=4737.6212 kl=7.3984
+[Iter 351/488] steps=718848 reward=148.75 pi_loss=0.0164 vf_loss=71.1241 entropy=2659.2486 kl=6.8665
+[Iter 352/488] steps=720896 reward=199.35 pi_loss=0.0382 vf_loss=43.0708 entropy=1775.5439 kl=8.8988
+  [Eval] mean_return=314.89 std_return=73.24
+[Iter 353/488] steps=722944 reward=242.12 pi_loss=-0.0402 vf_loss=29.9140 entropy=885.4923 kl=5.6275
+[Iter 354/488] steps=724992 reward=303.98 pi_loss=-0.0397 vf_loss=11.2834 entropy=526.4119 kl=5.4076
+[Iter 355/488] steps=727040 reward=271.33 pi_loss=0.0392 vf_loss=6.7965 entropy=710.9199 kl=6.8150
+[Iter 356/488] steps=729088 reward=280.60 pi_loss=0.0186 vf_loss=6.2618 entropy=532.0369 kl=9.1467
+[Iter 357/488] steps=731136 reward=178.22 pi_loss=-0.0175 vf_loss=45.2768 entropy=400.2154 kl=7.4763
+  [Eval] mean_return=192.91 std_return=43.38
+[Iter 358/488] steps=733184 reward=178.79 pi_loss=0.0003 vf_loss=48.4263 entropy=124.2696 kl=0.9542
+[Iter 359/488] steps=735232 reward=185.78 pi_loss=0.0115 vf_loss=26.4154 entropy=3114.5762 kl=7.4108
+[Iter 360/488] steps=737280 reward=217.32 pi_loss=0.0007 vf_loss=19.0771 entropy=603.9911 kl=5.5213
+[Iter 361/488] steps=739328 reward=225.91 pi_loss=0.0187 vf_loss=6.2006 entropy=846.1735 kl=6.2388
+[Iter 362/488] steps=741376 reward=349.08 pi_loss=0.0124 vf_loss=2.7079 entropy=666.4413 kl=8.9898
+  [Eval] mean_return=818.39 std_return=275.46
+[Iter 363/488] steps=743424 reward=797.36 pi_loss=-0.0016 vf_loss=14.6527 entropy=283.9710 kl=2.1651
+[Iter 364/488] steps=745472 reward=407.51 pi_loss=0.0064 vf_loss=3.1835 entropy=753.8209 kl=4.2646
+[Iter 365/488] steps=747520 reward=274.51 pi_loss=-0.0025 vf_loss=24.1982 entropy=157.6284 kl=1.8363
+[Iter 366/488] steps=749568 reward=354.30 pi_loss=0.0035 vf_loss=3.2953 entropy=573.4575 kl=8.6424
+[Iter 367/488] steps=751616 reward=255.67 pi_loss=-0.0436 vf_loss=30.7259 entropy=377.4357 kl=9.8358
+  [Eval] mean_return=242.13 std_return=49.06
+[Iter 368/488] steps=753664 reward=260.78 pi_loss=-0.0149 vf_loss=22.7006 entropy=465.4142 kl=9.7785
+[Iter 369/488] steps=755712 reward=164.65 pi_loss=0.0081 vf_loss=77.1946 entropy=193.7776 kl=3.5200
+[Iter 370/488] steps=757760 reward=201.86 pi_loss=-0.0052 vf_loss=65.5793 entropy=509.8711 kl=7.4396
+[Iter 371/488] steps=759808 reward=273.92 pi_loss=0.0114 vf_loss=39.3487 entropy=1036.5234 kl=6.6621
+[Iter 372/488] steps=761856 reward=471.06 pi_loss=-0.0335 vf_loss=6.7937 entropy=893.3013 kl=3.1367
+  [Eval] mean_return=717.67 std_return=312.81
+[Iter 373/488] steps=763904 reward=465.31 pi_loss=-0.0194 vf_loss=4.7119 entropy=340.7112 kl=3.5797
+[Iter 374/488] steps=765952 reward=265.31 pi_loss=-0.0316 vf_loss=20.8668 entropy=465.7402 kl=5.1841
+[Iter 375/488] steps=768000 reward=275.02 pi_loss=-0.0165 vf_loss=17.1652 entropy=395.2840 kl=4.0290
+[Iter 376/488] steps=770048 reward=212.74 pi_loss=-0.0020 vf_loss=39.0955 entropy=663.8059 kl=5.4108
+  [Eval] mean_return=199.05 std_return=25.15
+[Iter 377/488] steps=772096 reward=175.45 pi_loss=-0.0320 vf_loss=71.8310 entropy=333.7034 kl=8.4569
+[Iter 378/488] steps=774144 reward=191.73 pi_loss=0.0012 vf_loss=75.1620 entropy=363.6460 kl=2.2515
+[Iter 379/488] steps=776192 reward=165.66 pi_loss=0.0148 vf_loss=62.6182 entropy=703.6433 kl=9.5082
+[Iter 380/488] steps=778240 reward=170.90 pi_loss=0.0070 vf_loss=114.1544 entropy=325.5998 kl=5.1666
+[Iter 381/488] steps=780288 reward=142.62 pi_loss=0.0174 vf_loss=125.5697 entropy=603.6172 kl=5.2197
+  [Eval] mean_return=250.16 std_return=66.24
+[Iter 382/488] steps=782336 reward=150.31 pi_loss=0.0525 vf_loss=112.3839 entropy=1298.3598 kl=6.6598
+[Iter 383/488] steps=784384 reward=192.45 pi_loss=0.0374 vf_loss=91.1682 entropy=2309.9273 kl=9.8689
+[Iter 384/488] steps=786432 reward=179.01 pi_loss=0.0207 vf_loss=70.6823 entropy=777.4015 kl=7.0864
+[Iter 385/488] steps=788480 reward=180.40 pi_loss=0.0452 vf_loss=101.1108 entropy=959.4835 kl=7.5566
+[Iter 386/488] steps=790528 reward=179.73 pi_loss=0.0602 vf_loss=65.9170 entropy=2197.4610 kl=10.2608
+  [Eval] mean_return=188.40 std_return=85.33
+[Iter 387/488] steps=792576 reward=179.47 pi_loss=0.0132 vf_loss=84.6466 entropy=498.6328 kl=5.0306
+[Iter 388/488] steps=794624 reward=186.58 pi_loss=0.0549 vf_loss=68.1674 entropy=600.4201 kl=8.2172
+[Iter 389/488] steps=796672 reward=134.11 pi_loss=0.0041 vf_loss=121.6862 entropy=468.5961 kl=4.5901
+[Iter 390/488] steps=798720 reward=165.71 pi_loss=-0.0030 vf_loss=86.2066 entropy=383.2931 kl=5.5611
+[Iter 391/488] steps=800768 reward=198.52 pi_loss=-0.0023 vf_loss=79.2975 entropy=512.8098 kl=5.5136
+  [Eval] mean_return=247.48 std_return=97.13
+[Iter 392/488] steps=802816 reward=171.89 pi_loss=0.0396 vf_loss=63.5218 entropy=2118.8788 kl=8.2408
+[Iter 393/488] steps=804864 reward=206.82 pi_loss=0.0022 vf_loss=57.1043 entropy=362.0622 kl=7.3479
+[Iter 394/488] steps=806912 reward=204.39 pi_loss=0.0016 vf_loss=66.2277 entropy=380.2724 kl=6.0687
+[Iter 395/488] steps=808960 reward=166.69 pi_loss=0.0343 vf_loss=61.7113 entropy=676.2548 kl=7.7478
+[Iter 396/488] steps=811008 reward=156.65 pi_loss=0.0157 vf_loss=93.2025 entropy=610.1896 kl=4.2249
+  [Eval] mean_return=301.45 std_return=77.64
+[Iter 397/488] steps=813056 reward=188.22 pi_loss=0.0213 vf_loss=38.6777 entropy=1536.8710 kl=7.2689
+[Iter 398/488] steps=815104 reward=229.61 pi_loss=0.0533 vf_loss=75.8257 entropy=663.5465 kl=9.8253
+[Iter 399/488] steps=817152 reward=213.09 pi_loss=0.0188 vf_loss=82.4591 entropy=617.5000 kl=7.4059
+[Iter 400/488] steps=819200 reward=170.36 pi_loss=0.0191 vf_loss=66.5775 entropy=627.1244 kl=5.5979
+[Iter 401/488] steps=821248 reward=300.44 pi_loss=0.0058 vf_loss=68.6221 entropy=690.7824 kl=4.2316
+  [Eval] mean_return=138.83 std_return=65.04
+[Iter 402/488] steps=823296 reward=188.42 pi_loss=0.0033 vf_loss=82.4180 entropy=296.7905 kl=1.5857
+[Iter 403/488] steps=825344 reward=220.24 pi_loss=0.0131 vf_loss=89.7214 entropy=1874.2799 kl=4.4735
+[Iter 404/488] steps=827392 reward=155.64 pi_loss=0.0092 vf_loss=101.5200 entropy=1479.6241 kl=5.1209
+[Iter 405/488] steps=829440 reward=266.85 pi_loss=0.0053 vf_loss=64.7315 entropy=248.5033 kl=2.6502
+[Iter 406/488] steps=831488 reward=428.85 pi_loss=-0.0127 vf_loss=28.8351 entropy=713.4030 kl=9.3780
+  [Eval] mean_return=809.76 std_return=269.03
+[Iter 407/488] steps=833536 reward=380.41 pi_loss=-0.0133 vf_loss=49.2890 entropy=386.8655 kl=2.2838
+[Iter 408/488] steps=835584 reward=415.75 pi_loss=0.0078 vf_loss=34.2728 entropy=478.1495 kl=2.6388
+[Iter 409/488] steps=837632 reward=492.76 pi_loss=0.0133 vf_loss=11.2316 entropy=407.8513 kl=8.4178
+[Iter 410/488] steps=839680 reward=506.57 pi_loss=-0.0030 vf_loss=30.2300 entropy=142.9711 kl=1.4701
+[Iter 411/488] steps=841728 reward=415.08 pi_loss=0.0057 vf_loss=19.7474 entropy=377.4902 kl=3.8426
+  [Eval] mean_return=602.37 std_return=245.76
+[Iter 412/488] steps=843776 reward=621.89 pi_loss=-0.0016 vf_loss=22.6213 entropy=162.1801 kl=2.3379
+[Iter 413/488] steps=845824 reward=442.94 pi_loss=0.0063 vf_loss=23.9471 entropy=408.5778 kl=5.5962
+[Iter 414/488] steps=847872 reward=335.02 pi_loss=-0.0039 vf_loss=40.9386 entropy=399.7639 kl=6.8946
+[Iter 415/488] steps=849920 reward=319.36 pi_loss=0.0102 vf_loss=25.7606 entropy=261.1324 kl=6.1561
+[Iter 416/488] steps=851968 reward=363.54 pi_loss=-0.0012 vf_loss=22.5849 entropy=447.7479 kl=10.1170
+  [Eval] mean_return=374.66 std_return=209.60
+[Iter 417/488] steps=854016 reward=313.38 pi_loss=0.0055 vf_loss=28.3791 entropy=205.5675 kl=4.2379
+[Iter 418/488] steps=856064 reward=284.07 pi_loss=0.0047 vf_loss=59.4705 entropy=120.5088 kl=1.1525
+[Iter 419/488] steps=858112 reward=451.25 pi_loss=-0.0279 vf_loss=15.8471 entropy=324.0551 kl=9.3179
+[Iter 420/488] steps=860160 reward=506.74 pi_loss=-0.0005 vf_loss=32.0363 entropy=129.4788 kl=1.6811
+  [Eval] mean_return=586.89 std_return=273.94
+[Iter 421/488] steps=862208 reward=372.56 pi_loss=0.0077 vf_loss=32.3641 entropy=185.9812 kl=3.1600
+[Iter 422/488] steps=864256 reward=337.18 pi_loss=0.0200 vf_loss=37.8080 entropy=362.7834 kl=3.9224
+[Iter 423/488] steps=866304 reward=478.27 pi_loss=-0.0032 vf_loss=26.3738 entropy=163.9303 kl=2.7996
+[Iter 424/488] steps=868352 reward=1033.97 pi_loss=0.0089 vf_loss=18.5852 entropy=363.9818 kl=8.8636
+[Iter 425/488] steps=870400 reward=334.77 pi_loss=-0.0165 vf_loss=25.8936 entropy=183.6046 kl=2.9065
+  [Eval] mean_return=575.54 std_return=331.30
+[Iter 426/488] steps=872448 reward=418.93 pi_loss=0.0042 vf_loss=25.9277 entropy=173.3278 kl=2.2885
+[Iter 427/488] steps=874496 reward=314.17 pi_loss=-0.0150 vf_loss=40.4657 entropy=311.9159 kl=8.3511
+[Iter 428/488] steps=876544 reward=512.52 pi_loss=0.0003 vf_loss=43.7649 entropy=96.8255 kl=1.0357
+[Iter 429/488] steps=878592 reward=360.49 pi_loss=0.0060 vf_loss=40.0398 entropy=191.9514 kl=2.1129
+[Iter 430/488] steps=880640 reward=372.36 pi_loss=0.0016 vf_loss=41.8815 entropy=155.1040 kl=3.4579
+  [Eval] mean_return=647.76 std_return=316.12
+[Iter 431/488] steps=882688 reward=417.79 pi_loss=0.0016 vf_loss=41.0134 entropy=123.1816 kl=2.4224
+[Iter 432/488] steps=884736 reward=283.32 pi_loss=0.0014 vf_loss=82.4868 entropy=84.3365 kl=0.6608
+[Iter 433/488] steps=886784 reward=351.48 pi_loss=0.0053 vf_loss=40.3283 entropy=314.4841 kl=6.2836
+[Iter 434/488] steps=888832 reward=579.63 pi_loss=0.0060 vf_loss=44.3895 entropy=284.8099 kl=3.4804
+[Iter 435/488] steps=890880 reward=446.52 pi_loss=0.0002 vf_loss=37.8356 entropy=245.0206 kl=2.5506
+  [Eval] mean_return=888.68 std_return=238.74
+[Iter 436/488] steps=892928 reward=717.74 pi_loss=-0.0006 vf_loss=24.4066 entropy=204.2154 kl=3.1969
+[Iter 437/488] steps=894976 reward=622.59 pi_loss=-0.0007 vf_loss=46.0087 entropy=76.7107 kl=0.4076
+[Iter 438/488] steps=897024 reward=474.26 pi_loss=-0.0068 vf_loss=44.9453 entropy=104.4402 kl=1.4451
+[Iter 439/488] steps=899072 reward=952.65 pi_loss=0.0044 vf_loss=18.6068 entropy=96.6663 kl=1.1910
+[Iter 440/488] steps=901120 reward=676.76 pi_loss=-0.0057 vf_loss=30.4794 entropy=197.1752 kl=7.0763
+  [Eval] mean_return=723.64 std_return=355.95
+[Iter 441/488] steps=903168 reward=572.61 pi_loss=-0.0022 vf_loss=24.4597 entropy=131.9406 kl=2.5869
+[Iter 442/488] steps=905216 reward=409.56 pi_loss=0.0049 vf_loss=61.2270 entropy=124.9043 kl=2.1914
+[Iter 443/488] steps=907264 reward=366.91 pi_loss=-0.0004 vf_loss=71.8351 entropy=84.9908 kl=0.4973
+[Iter 444/488] steps=909312 reward=620.61 pi_loss=0.0003 vf_loss=34.0261 entropy=163.1242 kl=4.0514
+[Iter 445/488] steps=911360 reward=295.70 pi_loss=0.0063 vf_loss=73.3329 entropy=188.7807 kl=2.8065
+  [Eval] mean_return=649.06 std_return=292.97
+[Iter 446/488] steps=913408 reward=651.46 pi_loss=0.0017 vf_loss=22.4366 entropy=76.0290 kl=0.3641
+[Iter 447/488] steps=915456 reward=266.23 pi_loss=-0.0011 vf_loss=87.6655 entropy=97.5244 kl=1.3521
+[Iter 448/488] steps=917504 reward=265.31 pi_loss=0.0008 vf_loss=83.2128 entropy=163.5281 kl=2.8401
+[Iter 449/488] steps=919552 reward=232.42 pi_loss=0.0136 vf_loss=91.6375 entropy=305.8982 kl=3.7857
+[Iter 450/488] steps=921600 reward=255.73 pi_loss=-0.0040 vf_loss=69.6962 entropy=162.8188 kl=2.5347
+  [Eval] mean_return=472.82 std_return=185.27
+[Iter 451/488] steps=923648 reward=291.93 pi_loss=-0.0000 vf_loss=80.9970 entropy=72.6941 kl=0.2348
+[Iter 452/488] steps=925696 reward=279.16 pi_loss=-0.0010 vf_loss=76.0050 entropy=71.7612 kl=0.2183
+[Iter 453/488] steps=927744 reward=370.60 pi_loss=-0.0176 vf_loss=38.2851 entropy=189.8471 kl=5.1369
+[Iter 454/488] steps=929792 reward=257.03 pi_loss=-0.0009 vf_loss=97.5313 entropy=77.6147 kl=0.4000
+[Iter 455/488] steps=931840 reward=342.52 pi_loss=0.0014 vf_loss=44.6389 entropy=124.1957 kl=1.9768
+  [Eval] mean_return=476.82 std_return=271.26
+[Iter 456/488] steps=933888 reward=361.61 pi_loss=0.0106 vf_loss=76.4406 entropy=211.4104 kl=6.2803
+[Iter 457/488] steps=935936 reward=294.75 pi_loss=-0.0002 vf_loss=92.8676 entropy=80.2940 kl=0.6695
+[Iter 458/488] steps=937984 reward=563.21 pi_loss=0.0065 vf_loss=48.4717 entropy=115.2840 kl=2.1141
+[Iter 459/488] steps=940032 reward=235.13 pi_loss=0.0057 vf_loss=114.6517 entropy=95.3835 kl=1.5112
+  [Eval] mean_return=249.10 std_return=212.04
+[Iter 460/488] steps=942080 reward=251.48 pi_loss=-0.0005 vf_loss=87.7588 entropy=77.6872 kl=0.3426
+[Iter 461/488] steps=944128 reward=209.03 pi_loss=-0.0006 vf_loss=117.8522 entropy=69.0047 kl=0.0551
+[Iter 462/488] steps=946176 reward=310.51 pi_loss=0.0084 vf_loss=78.7372 entropy=191.0904 kl=4.2467
+[Iter 463/488] steps=948224 reward=233.69 pi_loss=0.0001 vf_loss=98.7631 entropy=70.8781 kl=0.1521
+[Iter 464/488] steps=950272 reward=221.38 pi_loss=0.0036 vf_loss=123.1234 entropy=78.1282 kl=0.5483
+  [Eval] mean_return=227.09 std_return=75.53
+[Iter 465/488] steps=952320 reward=250.35 pi_loss=0.0016 vf_loss=107.7778 entropy=99.3318 kl=1.3565
+[Iter 466/488] steps=954368 reward=316.19 pi_loss=0.0008 vf_loss=76.5538 entropy=87.7298 kl=0.8844
+[Iter 467/488] steps=956416 reward=201.24 pi_loss=0.0055 vf_loss=100.4223 entropy=117.7677 kl=1.8066
+[Iter 468/488] steps=958464 reward=223.79 pi_loss=0.0057 vf_loss=96.2780 entropy=96.1959 kl=1.2803
+[Iter 469/488] steps=960512 reward=280.50 pi_loss=0.0087 vf_loss=86.2030 entropy=102.1930 kl=1.6918
+  [Eval] mean_return=189.65 std_return=96.92
+[Iter 470/488] steps=962560 reward=194.47 pi_loss=-0.0031 vf_loss=97.0171 entropy=94.8237 kl=1.3485
+[Iter 471/488] steps=964608 reward=220.29 pi_loss=-0.0023 vf_loss=92.0295 entropy=69.1172 kl=0.0588
+[Iter 472/488] steps=966656 reward=229.42 pi_loss=-0.0048 vf_loss=80.5919 entropy=131.6567 kl=2.5174
+[Iter 473/488] steps=968704 reward=175.15 pi_loss=-0.0019 vf_loss=138.1505 entropy=68.5136 kl=0.0362
+[Iter 474/488] steps=970752 reward=266.02 pi_loss=0.0029 vf_loss=80.6324 entropy=109.3039 kl=1.7173
+  [Eval] mean_return=214.49 std_return=123.16
+[Iter 475/488] steps=972800 reward=228.17 pi_loss=-0.0001 vf_loss=117.3902 entropy=71.3519 kl=0.1952
+[Iter 476/488] steps=974848 reward=186.71 pi_loss=-0.0007 vf_loss=101.1962 entropy=88.2206 kl=1.1766
+[Iter 477/488] steps=976896 reward=335.82 pi_loss=-0.0022 vf_loss=71.8923 entropy=69.0113 kl=0.0601
+[Iter 478/488] steps=978944 reward=310.54 pi_loss=-0.0015 vf_loss=60.8724 entropy=69.5078 kl=0.0768
+[Iter 479/488] steps=980992 reward=221.37 pi_loss=-0.0020 vf_loss=89.6808 entropy=68.5642 kl=0.0262
+  [Eval] mean_return=243.08 std_return=125.04
+[Iter 480/488] steps=983040 reward=203.19 pi_loss=-0.0022 vf_loss=98.4979 entropy=68.5495 kl=0.0203
+[Iter 481/488] steps=985088 reward=297.83 pi_loss=-0.0028 vf_loss=85.4834 entropy=68.5994 kl=0.0214
+[Iter 482/488] steps=987136 reward=225.87 pi_loss=-0.0017 vf_loss=115.5099 entropy=68.5623 kl=0.0275
+[Iter 483/488] steps=989184 reward=249.30 pi_loss=-0.0013 vf_loss=92.2802 entropy=69.3614 kl=0.0853
+[Iter 484/488] steps=991232 reward=227.04 pi_loss=-0.0019 vf_loss=111.6998 entropy=68.3125 kl=0.0109
+  [Eval] mean_return=224.79 std_return=169.37
+[Iter 485/488] steps=993280 reward=244.28 pi_loss=-0.0012 vf_loss=73.0072 entropy=69.2299 kl=0.0652
+[Iter 486/488] steps=995328 reward=286.21 pi_loss=-0.0019 vf_loss=69.8238 entropy=68.3565 kl=0.0091
+[Iter 487/488] steps=997376 reward=268.16 pi_loss=-0.0029 vf_loss=82.4477 entropy=68.3465 kl=0.0115
+[Iter 488/488] steps=999424 reward=178.37 pi_loss=-0.0013 vf_loss=117.5004 entropy=68.0516 kl=0.0047
+Training complete. Logs saved to results/8hr/hop_K16_kl_inverse/seed_42

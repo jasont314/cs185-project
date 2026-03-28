@@ -2,7 +2,9 @@ venv/
 __pycache__/
 *.pyc
 *.pyo
-results/
+# Keep CSV results, ignore heavy checkpoints
+results/**/checkpoints/
+results/**/tb/
 *.pt
 *.egg-info/
 .eggs/
