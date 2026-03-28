@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional
 import numpy as np
 import torch
 
-from src.envs import get_env_info, make_env
+from src.envs import get_env_info, make_env, make_vec_env
 from src.algorithms.ppo_awfm import PPOAWFM
 from src.algorithms.ppo_cumulative import PPOCumulative
 from src.algorithms.ppo_fisher import PPOFisher
@@ -100,7 +100,11 @@ class Trainer:
         self.action_high = env_info["action_high"]
 
         # Create train and eval environments
-        self.train_env = make_env(env_name, seed=seed)
+        self.num_envs = config.get("num_envs", 1)
+        if self.num_envs > 1:
+            self.train_env = make_vec_env(env_name, self.num_envs, seed=seed)
+        else:
+            self.train_env = make_env(env_name, seed=seed)
         self.eval_env = make_env(env_name, seed=seed + 1000)
 
         # Build agent config
@@ -129,6 +133,7 @@ class Trainer:
             "batch_size": ppo_cfg.get("batch_size", 64),
             "lr": ppo_cfg.get("lr", 3e-4),
             "device": str(self.device),
+            "num_envs": self.num_envs,
         }
 
         # Create the appropriate PPO agent

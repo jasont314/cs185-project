@@ -86,6 +86,14 @@ class PPOHolistic:
             hidden_dim=self.cfg["vf_hidden_dim"],
         ).to(self.device)
 
+        # torch.compile for faster forward/backward (PyTorch 2.0+)
+        if self.cfg.get("compile", True):
+            try:
+                self.policy = torch.compile(self.policy, mode="reduce-overhead")
+                self.value_fn = torch.compile(self.value_fn, mode="reduce-overhead")
+            except Exception:
+                pass  # graceful fallback if compile not supported
+
         # Optimizer + linear LR annealing
         self.optimizer = optim.Adam(
             list(self.policy.parameters()) + list(self.value_fn.parameters()),
@@ -93,14 +101,16 @@ class PPOHolistic:
         )
         self._initial_lr = self.cfg["lr"]
 
-        # Rollout buffer (use policy's resolved latent_dim)
+        # Rollout buffer — with vec envs, each step produces num_envs
+        # transitions, so allocate accordingly (stored flattened, num_envs=1)
+        n_envs = self.cfg.get("num_envs", 1)
         self.buffer = RolloutBuffer(
-            num_steps=self.cfg["num_steps"],
+            num_steps=self.cfg["num_steps"] * n_envs,
             state_dim=self.cfg["state_dim"],
             action_dim=self.cfg["action_dim"],
             latent_dim=self.policy.latent_dim,
             K=self.cfg["K"],
-            num_envs=self.cfg["num_envs"],
+            num_envs=1,  # flattened storage
             device=self.device,
         )
 
@@ -113,102 +123,42 @@ class PPOHolistic:
     def collect_rollouts(self, env: Any, num_steps: int) -> Dict[str, float]:
         """Collect environment transitions and fill the rollout buffer.
 
+        Supports both single and vectorized environments.
+
         Args:
-            env: Gymnasium-compatible environment.
-            num_steps: Number of steps to collect.
+            env: Gymnasium-compatible environment (single or vectorized).
+            num_steps: Number of steps per environment to collect.
 
         Returns:
-            Dict with rollout statistics (mean_reward, mean_episode_length, etc.).
+            Dict with rollout statistics.
         """
-        self.buffer.reset()
-        self.policy.eval()
-        self.value_fn.eval()
+        from src.algorithms.rollout import collect_rollouts_vec
 
-        obs, _ = env.reset() if not hasattr(env, '_last_obs') else (env._last_obs, None)
-        # For repeated calls, we might want to keep the env state.
-        # Simple approach: always reset at rollout start unless env tracks state.
-        if not hasattr(self, '_last_obs') or self._last_obs is None:
-            obs, _ = env.reset()
-        else:
-            obs = self._last_obs
+        # Build mutable state dict (shared across calls)
+        if not hasattr(self, '_rollout_state'):
+            self._rollout_state = {
+                '_last_obs': None,
+                '_current_ep_rewards': None,
+                '_current_ep_lengths': None,
+                'total_steps': self.total_steps,
+            }
+        self._rollout_state['total_steps'] = self.total_steps
 
-        episode_rewards: list[float] = []
-        episode_lengths: list[int] = []
-        current_ep_reward = getattr(self, '_current_ep_reward', 0.0)
-        current_ep_length = getattr(self, '_current_ep_length', 0)
-
-        with torch.no_grad():
-            for _ in range(num_steps):
-                obs_t = torch.as_tensor(obs, dtype=torch.float32, device=self.device)
-                if obs_t.dim() == 1:
-                    obs_t = obs_t.unsqueeze(0)
-
-                # Get action and info from policy
-                action, info = self.policy.get_action_and_info(obs_t)
-                value = self.value_fn(obs_t)
-
-                # To numpy
-                action_np = action.squeeze(0).cpu().numpy()
-                value_np = value.squeeze(0).cpu().item()
-                hlp_np = info["holistic_log_prob"].squeeze(0).cpu().numpy()
-                pslp_np = info["per_step_log_probs"].squeeze(0).cpu().numpy()
-                latents_np = [z.squeeze(0).cpu().numpy() for z in info["latents"]]
-                noises_np = [e.squeeze(0).cpu().numpy() for e in info["noises"]]
-
-                # Clip action to valid range
-                action_clipped = np.clip(action_np, -1.0, 1.0)
-
-                # Step environment
-                next_obs, reward, terminated, truncated, env_info = env.step(action_clipped)
-                done = terminated or truncated
-
-                # Store
-                self.buffer.add(
-                    state=obs,
-                    action=action_clipped,
-                    reward=float(reward),
-                    done=float(done),
-                    value=value_np,
-                    holistic_log_prob=hlp_np,
-                    per_step_log_probs=pslp_np,
-                    latents=latents_np,
-                    noises=noises_np,
-                )
-
-                current_ep_reward += float(reward)
-                current_ep_length += 1
-                self.total_steps += 1
-
-                if done:
-                    episode_rewards.append(current_ep_reward)
-                    episode_lengths.append(current_ep_length)
-                    current_ep_reward = 0.0
-                    current_ep_length = 0
-                    next_obs, _ = env.reset()
-
-                obs = next_obs
-
-        # Save state for next rollout
-        self._last_obs = obs
-        self._current_ep_reward = current_ep_reward
-        self._current_ep_length = current_ep_length
-
-        # Compute bootstrap value
-        with torch.no_grad():
-            obs_t = torch.as_tensor(obs, dtype=torch.float32, device=self.device)
-            if obs_t.dim() == 1:
-                obs_t = obs_t.unsqueeze(0)
-            last_value = self.value_fn(obs_t).squeeze(0).cpu().item()
-
-        self.buffer.compute_returns(
-            last_value, gamma=self.cfg["gamma"], gae_lambda=self.cfg["gae_lambda"]
+        stats = collect_rollouts_vec(
+            env=env,
+            policy=self.policy,
+            value_fn=self.value_fn,
+            buffer=self.buffer,
+            num_steps=num_steps,
+            device=self.device,
+            agent_state=self._rollout_state,
+            gamma=self.cfg["gamma"],
+            gae_lambda=self.cfg["gae_lambda"],
         )
 
-        stats = {
-            "mean_reward": float(np.mean(episode_rewards)) if episode_rewards else 0.0,
-            "mean_episode_length": float(np.mean(episode_lengths)) if episode_lengths else 0.0,
-            "num_episodes": len(episode_rewards),
-        }
+        self.total_steps = self._rollout_state['total_steps']
+        # Backward compat aliases
+        self._last_obs = self._rollout_state['_last_obs']
         return stats
 
     # ------------------------------------------------------------------

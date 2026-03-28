@@ -18,6 +18,29 @@ def make_env(env_name: str, seed: int = 0) -> gym.Env:
     return env
 
 
+def make_vec_env(env_name: str, num_envs: int, seed: int = 0) -> gym.vector.VectorEnv:
+    """Create vectorized environments for parallel rollout collection.
+
+    Args:
+        env_name: Gymnasium environment ID.
+        num_envs: Number of parallel environments.
+        seed: Base random seed (each env gets seed + i).
+
+    Returns:
+        A vectorized environment.
+    """
+    def make_single(i: int):
+        def _init():
+            env = gym.make(env_name)
+            env.reset(seed=seed + i)
+            return env
+        return _init
+
+    if num_envs == 1:
+        return gym.vector.SyncVectorEnv([make_single(0)])
+    return gym.vector.SyncVectorEnv([make_single(i) for i in range(num_envs)])
+
+
 def get_env_info(env_name: str) -> dict:
     """Get state_dim and action_dim for an environment.
 
