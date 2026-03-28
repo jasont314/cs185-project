@@ -538,6 +538,200 @@ def compute_hierarchical_cumulative_loss(
 
 
 # ---------------------------------------------------------------------------
+# Per-step V-MPO (softmax-weighted MLE, no importance ratios)
+# ---------------------------------------------------------------------------
+
+
+def compute_vmpo_loss(
+    step_log_probs_new: torch.Tensor,
+    advantages: torch.Tensor,
+    K: int,
+    log_etas: torch.Tensor,
+    eps_eta: float = 0.01,
+    top_frac: float = 0.5,
+) -> Tuple[torch.Tensor, torch.Tensor, Dict[str, torch.Tensor]]:
+    """Per-step V-MPO: softmax-weighted MLE with learned temperatures.
+
+    For each flow step k, filters to the top fraction of the batch by
+    advantage, computes softmax weights w_i = softmax(A_i / eta_k), and
+    minimises the weighted negative log-likelihood under the current policy.
+
+    No importance ratios are used anywhere.
+
+    Args:
+        step_log_probs_new: shape (batch, K), current policy per-step log probs.
+        advantages: shape (batch,), GAE advantage estimates.
+        K: number of flow steps.
+        log_etas: shape (K,), learnable log-temperatures (nn.Parameter).
+        eps_eta: KL constraint target per step for the dual temperature loss.
+        top_frac: fraction of batch to keep (by advantage).
+
+    Returns:
+        policy_loss: Scalar weighted-MLE policy loss (averaged over K steps).
+        eta_loss: Scalar dual temperature loss (averaged over K steps).
+        info: Dict with diagnostics.
+    """
+    import math
+
+    batch = step_log_probs_new.shape[0]
+
+    # Filter to top fraction by advantage
+    n_keep = max(int(batch * top_frac), 1)
+    top_idx = torch.topk(advantages, n_keep).indices
+    top_lp = step_log_probs_new[top_idx]  # (n_keep, K)
+    top_adv = advantages[top_idx]  # (n_keep,)
+
+    policy_loss = torch.tensor(0.0, device=step_log_probs_new.device)
+    eta_loss = torch.tensor(0.0, device=step_log_probs_new.device)
+
+    for k in range(K):
+        eta_k = torch.exp(log_etas[k]).clamp(min=1e-4)
+
+        # Softmax weights over filtered batch (detached -- no gradient through weights)
+        logits = top_adv / eta_k
+        weights = torch.softmax(logits, dim=0).detach()
+
+        # Weighted negative log-likelihood at step k
+        step_loss = -(weights * top_lp[:, k]).sum()
+        policy_loss = policy_loss + step_loss
+
+        # Temperature dual loss: eta * eps + eta * (logsumexp(A/eta) - log(N))
+        step_eta_loss = eta_k * eps_eta + eta_k * (
+            torch.logsumexp(top_adv / eta_k, dim=0) - math.log(n_keep)
+        )
+        eta_loss = eta_loss + step_eta_loss
+
+    policy_loss = policy_loss / K
+    eta_loss = eta_loss / K
+
+    with torch.no_grad():
+        approx_kl = torch.tensor(0.0)  # no ratios = no KL in traditional sense
+        clip_fraction = torch.tensor(0.0)  # no clipping
+
+    info = {
+        "clip_fraction": clip_fraction,
+        "approx_kl": approx_kl,
+        "mean_ratio": torch.tensor(1.0),
+        "etas": [torch.exp(log_etas[k]).item() for k in range(K)],
+    }
+    return policy_loss, eta_loss, info
+
+
+# ---------------------------------------------------------------------------
+# AWFM: Advantage-Weighted Flow Matching
+# ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Mode 9: KL Budget Waterfilling PPO
+# ---------------------------------------------------------------------------
+
+
+def compute_waterfill_ppo_loss(
+    step_log_probs_new: torch.Tensor,
+    step_log_probs_old: torch.Tensor,
+    advantages: torch.Tensor,
+    K: int,
+    total_kl_budget: float = 0.02,
+    min_budget_frac: float = 0.01,
+) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+    """Per-step PPO with waterfilling KL budget allocation.
+
+    Derives from channel capacity theory: the optimal allocation of a total
+    KL budget D across K flow steps is d_k = D * alpha_k^2 / sum_j alpha_j^2,
+    where alpha_k is the per-step advantage magnitude (or a proxy thereof).
+
+    On the first PPO epoch (ratios ~ 1.0), per-step KL is near zero, so we
+    use the per-step ratio deviation |r_k - 1| as a proxy for alpha_k.
+    When that is also uninformative (all near zero), we fall back to uniform
+    allocation d_k = D / K.
+
+    The KL budget per step is converted to a clip epsilon via the Gaussian
+    approximation: eps_k = sqrt(2 * d_k).
+
+    Args:
+        step_log_probs_new: shape (batch, K), new per-step log probs.
+        step_log_probs_old: shape (batch, K), old per-step log probs.
+        advantages: shape (batch,), advantage estimates.
+        K: number of flow steps.
+        total_kl_budget: total KL divergence budget D across all steps.
+        min_budget_frac: minimum fraction of budget per step (floor).
+
+    Returns:
+        loss: Scalar policy loss.
+        info: Dict with diagnostics.
+    """
+    # Per-step importance ratios: (batch, K)
+    log_ratios = step_log_probs_new - step_log_probs_old
+    log_ratios = torch.clamp(log_ratios, -20.0, 20.0)
+    ratios = torch.exp(log_ratios)
+
+    # --- Waterfilling budget allocation (no grad) ---
+    with torch.no_grad():
+        # Per-step KL: E_batch[ (r_k - 1) - log(r_k) ]  (always >= 0)
+        per_step_kl = ((ratios - 1) - log_ratios).mean(dim=0)  # (K,)
+
+        # Use per-step KL as the allocation signal (proxy for alpha_k^2).
+        # If KL is too small (first epoch), use |r_k - 1| as fallback.
+        alpha_sq = per_step_kl  # (K,)
+        total_signal = alpha_sq.sum()
+
+        if total_signal < 1e-10:
+            # Fallback: ratio deviation |r_k - 1| averaged across batch
+            ratio_dev = (ratios - 1.0).abs().mean(dim=0)  # (K,)
+            alpha_sq = ratio_dev ** 2 + 1e-10
+            total_signal = alpha_sq.sum()
+
+        if total_signal < 1e-10:
+            # Ultimate fallback: uniform allocation
+            budgets = torch.full((K,), total_kl_budget / K,
+                                 device=step_log_probs_new.device)
+        else:
+            # Waterfill: d_k = D * alpha_k^2 / sum_j alpha_j^2
+            budgets = total_kl_budget * alpha_sq / total_signal  # (K,)
+
+        # Floor: ensure minimum budget per step
+        floor = total_kl_budget * min_budget_frac
+        budgets = budgets.clamp(min=floor)
+        # Renormalize so budgets still sum to D
+        budgets = budgets * (total_kl_budget / budgets.sum())
+
+        # Convert KL budget to clip epsilon: eps ~ sqrt(2 * d)
+        eps_per_step = torch.sqrt(2.0 * budgets)  # (K,)
+
+    # Uniform credit: 1/K per step
+    weighted_adv = advantages.unsqueeze(-1) / K  # (batch, K)
+
+    # Per-step clipping with waterfill-allocated epsilon
+    lower = (1.0 - eps_per_step).unsqueeze(0)  # (1, K)
+    upper = (1.0 + eps_per_step).unsqueeze(0)  # (1, K)
+    clipped = torch.clamp(ratios, lower, upper)
+
+    surr1 = ratios * weighted_adv
+    surr2 = clipped * weighted_adv
+
+    # Sum over steps, mean over batch
+    loss = -torch.min(surr1, surr2).sum(dim=-1).mean()
+
+    # --- Diagnostics ---
+    with torch.no_grad():
+        per_step_clip = ((ratios < lower) | (ratios > upper)).float().mean(dim=0)
+        clip_fraction = per_step_clip.mean()
+        approx_kl = ((ratios - 1) - log_ratios).mean()
+        mean_ratio = ratios.mean()
+
+    info = {
+        "clip_fraction": clip_fraction,
+        "approx_kl": approx_kl,
+        "mean_ratio": mean_ratio,
+        "per_step_clip_fractions": per_step_clip,
+        "per_step_eps": eps_per_step,
+        "per_step_budgets": budgets,
+    }
+    return loss, info
+
+
+# ---------------------------------------------------------------------------
 # AWFM: Advantage-Weighted Flow Matching
 # ---------------------------------------------------------------------------
 

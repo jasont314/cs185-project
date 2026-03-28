@@ -17,6 +17,8 @@ from src.algorithms.ppo_holistic import PPOHolistic
 from src.algorithms.ppo_intra_chain import PPOIntraChain
 from src.algorithms.ppo_per_step import PPOPerStep
 from src.algorithms.ppo_step_conditioned import PPOStepConditioned
+from src.algorithms.ppo_vmpo import PPOVmpo
+from src.algorithms.ppo_waterfill import PPOWaterfill
 from src.training.evaluate import evaluate_policy
 from src.training.logger import Logger
 
@@ -205,12 +207,22 @@ class Trainer:
             agent_config["beta"] = method_cfg.get("beta", 1.0)
             agent_config["top_frac"] = method_cfg.get("top_frac", 0.5)
             self.agent = PPOAWFM(agent_config)
+        elif mode == "waterfill":
+            agent_config["total_kl_budget"] = method_cfg.get("total_kl_budget", 0.02)
+            agent_config["min_budget_frac"] = method_cfg.get("min_budget_frac", 0.01)
+            self.agent = PPOWaterfill(agent_config)
+        elif mode == "vmpo":
+            agent_config["eps_eta"] = method_cfg.get("eps_eta", 0.01)
+            agent_config["top_frac"] = method_cfg.get("top_frac", 0.5)
+            agent_config["eta_lr"] = method_cfg.get("eta_lr", 1e-2)
+            self.agent = PPOVmpo(agent_config)
         else:
             raise ValueError(
                 f"Unknown method mode: {mode}. Expected one of: "
                 "holistic, cumulative, hierarchical, hierarchical_cumulative, "
-                "fisher_ppo, awfm, per_step_uniform, per_step_learned_global, "
-                "per_step_state_dependent, per_step_kl_inverse, step_conditioned"
+                "fisher_ppo, awfm, waterfill, vmpo, per_step_uniform, "
+                "per_step_learned_global, per_step_state_dependent, "
+                "per_step_kl_inverse, step_conditioned"
             )
 
         # Logging
@@ -291,12 +303,26 @@ class Trainer:
                     for k_idx, cf in enumerate(pscf):
                         self.logger.log(f"train/clip_frac_step_{k_idx}", cf, timestep)
 
-            # Log Fisher-scaled per-step clip epsilons
+            # Log per-step clip epsilons (Fisher or waterfill)
             if "per_step_eps" in update_stats:
                 pse = update_stats["per_step_eps"]
                 if isinstance(pse, list):
                     for k_idx, eps_val in enumerate(pse):
-                        self.logger.log(f"train/fisher_eps_step_{k_idx}", eps_val, timestep)
+                        self.logger.log(f"train/eps_step_{k_idx}", eps_val, timestep)
+
+            # Log waterfill per-step KL budgets
+            if "per_step_budgets" in update_stats:
+                psb = update_stats["per_step_budgets"]
+                if isinstance(psb, list):
+                    for k_idx, b_val in enumerate(psb):
+                        self.logger.log(f"train/kl_budget_step_{k_idx}", b_val, timestep)
+
+            # Log V-MPO per-step temperatures
+            if "etas" in update_stats:
+                for k_idx, eta_val in enumerate(update_stats["etas"]):
+                    self.logger.log(f"train/vmpo_eta_step_{k_idx}", eta_val, timestep)
+            if "eta_loss" in update_stats:
+                self.logger.log("train/eta_loss", update_stats["eta_loss"], timestep)
 
             # Log learned weights for learned_global mode
             if self.mode == "per_step_learned_global" and hasattr(self.agent, "weight_net"):
@@ -389,6 +415,11 @@ class Trainer:
         if hasattr(self.agent, "correction_net"):
             state["correction_net"] = self.agent.correction_net.state_dict()
 
+        # Save V-MPO temperature parameters
+        if hasattr(self.agent, "log_etas"):
+            state["log_etas"] = self.agent.log_etas.data
+            state["eta_optimizer"] = self.agent.eta_optimizer.state_dict()
+
         torch.save(state, path)
 
     def load_checkpoint(self, path: str) -> None:
@@ -411,6 +442,11 @@ class Trainer:
 
         if "correction_net" in state and hasattr(self.agent, "correction_net"):
             self.agent.correction_net.load_state_dict(state["correction_net"])
+
+        if "log_etas" in state and hasattr(self.agent, "log_etas"):
+            self.agent.log_etas.data.copy_(state["log_etas"])
+        if "eta_optimizer" in state and hasattr(self.agent, "eta_optimizer"):
+            self.agent.eta_optimizer.load_state_dict(state["eta_optimizer"])
 
 
 # ---------------------------------------------------------------------------
