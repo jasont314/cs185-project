@@ -248,10 +248,7 @@ class StochasticFlowPolicy(nn.Module):
             k_embed = self.step_embed(k_idx)
 
             v = self._velocity(s_enc, z, k_embed)
-            sigma_raw = self._get_sigma(s_enc, z, k_embed)
-            # SDE-consistent noise: scale by sqrt(dt) so effective diffusion
-            # is K-independent. Without this, total noise scales as sigma*sqrt(K).
-            sigma = sigma_raw * (dt ** 0.5)
+            sigma = self._get_sigma(s_enc, z, k_embed)
 
             # Transition mean
             mean = z + dt * v
@@ -319,8 +316,7 @@ class StochasticFlowPolicy(nn.Module):
             k_embed = self.step_embed(k_idx)
 
             v = self._velocity(s_enc, z_k, k_embed)
-            sigma_raw = self._get_sigma(s_enc, z_k, k_embed)
-            sigma = sigma_raw * (dt ** 0.5)  # SDE-consistent scaling
+            sigma = self._get_sigma(s_enc, z_k, k_embed)
 
             mean = z_k + dt * v
             lp = gaussian_log_prob(mean, sigma, z_next)
